@@ -12,15 +12,24 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 5,
-      tripName: '',
+      pageNum: 1,
+      tripName: 'BFF Time in The Sun',
       departureDate: '',
       returnDate: '',
       friends: ['Booke Snelligs','Harry Potter'],
       airports:  ['LGA','JFK', 'MDW','ORD','LAS','SEA','SFO','DCA','MSY','PSP','SAN','STL','SEZ','SDX','HNL','MIA','BBG','BKG','BOS', 'MCO','PDX','BNA','LAX','SAT','AUS','SAV'],
       flightData: []
     };
+    this.dummyData=this.dummyData.bind(this)
+    this.changePage=this.changePage.bind(this)
   }
+
+//change page, associate this to a button to get to the next page
+changePage() {
+  let currentPage = this.state.pageNum
+  currentPage++
+  this.setState({pageNum: currentPage})
+}
 
 //Create dummy data, invoke this in your component if you want/need data
 dummyData () {
@@ -71,17 +80,33 @@ dummyData () {
 
   render() {
     if (this.state.pageNum ===0) {
-      return (<LandingPage />)
+      return (<LandingPage 
+        changePage={this.changePage}
+      />)
     } else if (this.state.pageNum === 1) {
-      return (<TripPreferences />)
+      return (<TripPreferences 
+        changePage={this.changePage}
+      />)
     } else if (this.state.pageNum === 2) {
-      return (<FlightList />)
+      return (<FlightList 
+        changePage={this.changePage}
+      />)
     } else if (this.state.pageNum === 3) {
-      return (<BookTrip />)
+      return (<BookTrip 
+        changePage={this.changePage}
+        friends={this.state.friends}
+      />)
     } else if (this.state.pageNum === 4) {
-      return (<PaymentPage />)
+      return (<PaymentPage
+        changePage={this.changePage} 
+        friends={this.state.friends}
+        flightData={this.state.flightData}
+        dummyData={this.dummyData}
+        />)
     } else if (this.state.pageNum === 5) {
-      return (<Confirmation />)
+      return (<Confirmation 
+        tripName={this.state.tripName}
+      />)
     }
   }
 }

@@ -3,7 +3,7 @@
 //States Passed Down From App: User Names
 import React from 'react';
 
-const BookTrip = props => {
+const BookTrip = ({}) => {
     return (
         <div>
             <text>Here is the Booking Page</text>
