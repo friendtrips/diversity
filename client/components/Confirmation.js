@@ -2,10 +2,12 @@
 // States Passed Down From App: Name of the Trip & Usernames
 import React from 'react';
 
-export default Confirmation = props => {
+const Confirmation = props => {
   return (
     <div>
       <text>Here are Confirmations</text>
     </div>
   );
 };
+
+export default Confirmation

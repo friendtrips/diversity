@@ -1,13 +1,15 @@
 import React from 'react';
-import FlightDetails from './FlightDetails';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import LandingPage from './LandingPage';
-import FlightList from './FlightList';
 import TripPreferences from './TripPreferences';
+import FlightList from './FlightList';
+import FlightDetails from './FlightDetails';
 import BookTrip from './BookTrip';
-import PaymentPage from './PaymentPage';
+import PaymentPage from './PaymentPage'
 import Confirmation from './Confirmation';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,8 +23,9 @@ class App extends React.Component {
   }
 
   render() {
-    return <h1>Hello, world!</h1>;
+    return (
+      <h1>Hello, world!</h1>
+
+    )
   }
 }
-
-export default App;
