@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import TripPreferences from './TripPreferences';
 import FlightList from './FlightList';
-import FlightDetails from './FlightDetails';
 import BookTrip from './BookTrip';
 import PaymentPage from './PaymentPage';
 import Confirmation from './Confirmation';
@@ -13,10 +12,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tripName: '',
+      pageNum: 1,
+      tripName: 'BFF Time in The Sun',
       departureDate: '',
       returnDate: '',
-      friends: [],
+      friends: ['Booke Snelligs', 'Harry Potter'],
       airports: [
         'LGA',
         'JFK',
@@ -47,9 +47,18 @@ export default class App extends React.Component {
       ],
       flightData: []
     };
+    this.dummyData = this.dummyData.bind(this);
+    this.changePage = this.changePage.bind(this);
   }
 
-  // Create dummy data
+  // change page, associate this to a button to get to the next page
+  changePage() {
+    let currentPage = this.state.pageNum;
+    currentPage++;
+    this.setState({ pageNum: currentPage });
+  }
+
+  // Create dummy data, invoke this in your component if you want/need data
   dummyData() {
     const hold = [
       {
@@ -97,6 +106,25 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <div>hello world</div>;
+    if (this.state.pageNum === 0) {
+      return <LandingPage changePage={this.changePage} />;
+    } if (this.state.pageNum === 1) {
+      return <TripPreferences changePage={this.changePage} />;
+    } if (this.state.pageNum === 2) {
+      return <FlightList changePage={this.changePage} />;
+    } else if (this.state.pageNum === 3) {
+      return <BookTrip changePage={this.changePage} friends={this.state.friends} />;
+    } else if (this.state.pageNum === 4) {
+      return (
+        <PaymentPage
+          changePage={this.changePage}
+          friends={this.state.friends}
+          flightData={this.state.flightData}
+          dummyData={this.dummyData}
+        />
+      );
+    } else if (this.state.pageNum === 5) {
+      return <Confirmation tripName={this.state.tripName} />;
+    }
   }
 }
