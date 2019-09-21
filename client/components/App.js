@@ -12,11 +12,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 1,
+      pageNum: 2,
       tripName: 'BFF Time in The Sun',
       departureDate: '',
       returnDate: '',
-      friends: ['Booke Snelligs', 'Harry Potter'],
+      friends: [{name:'Booke Snelligs', origin: 'AUS'}, {name: 'Harry Potter', origin: 'SAT'} ],
       airports: [
         'LGA',
         'JFK',
@@ -49,6 +49,7 @@ export default class App extends React.Component {
     };
     this.dummyData = this.dummyData.bind(this);
     this.changePage = this.changePage.bind(this);
+    this.updateDataWithNames = this.updateDataWithNames.bind(this);
   }
 
   // change page, associate this to a button to get to the next page
@@ -70,16 +71,21 @@ export default class App extends React.Component {
               departureFlight: {
                 departureTime: '2019-10-15T07:20:00',
                 arrivalTime: '2019-10-15T10:00:00',
-                airportCode: 'AUS'
+                leavingFrom: 'AUS',
+                arrivingAt: 'SFO',
+                flightNumber: 'HE9865',
+                airline: 'Southwest'
               },
               returnFlight: {
                 departureTime: '2019-10-20T15:10:00',
                 arriveTime: '2019-10-20T18:30:00',
-                airportCode: 'AUS'
+                leavingFrom: 'SFO',
+                arrivingAt: 'AUS',
+                flightNumber: 'HE9865',
+                airline: 'Southwest'
               }
             },
-            flightNumber: 'HE9865',
-            airline: 'Southwest'
+            
           },
           {
             itinerary: {
@@ -87,23 +93,58 @@ export default class App extends React.Component {
               departureFlight: {
                 departureTime: '2019-10-15T06:50:00',
                 arrivalTime: '2019-10-15T10:00:00',
-                airportCode: 'SAT'
+                leavingFrom: 'SAT',
+                arrivingAt: 'SFO',
+                flightNumber: 'R8675',
+                airline: 'Delta'
               },
               returnFlight: {
                 departureTime: '2019-10-20T14:10:00',
                 arriveTime: '2019-10-20T17:30:00',
-                airportCode: 'SAT'
+                leavingFrom: 'SFO',
+                arrivingAt: 'SAT',
+                flightNumber: 'R8675',
+                airline: 'Delta'
               }
             },
-            flightNumber: 'R8675',
-            airline: 'Delta'
+            
           }
         ],
         totalCost: 500
       }
     ];
-    this.setState({ flightData: hold });
+    this.setState({ flightData: hold }, () => this.updateDataWithNames());
   }
+  
+  componentWillMount () {
+    
+    this.dummyData();
+   
+
+  };
+
+updateDataWithNames() {
+  const findItineraryIndex = (origin, index) => {
+    for (let i = 0; i < this.state.flightData[index].flights.length; i++){
+      if (origin === this.state.flightData[index].flights[i].itinerary.departureFlight.leavingFrom) {
+        return i;
+      }
+    }
+  }
+  
+  const friendsCopy = this.state.friends.slice();
+  const hold = this.state.flightData;
+
+  hold.forEach((trip, index) => {
+    for (let i = 0; i < friendsCopy.length; i++) {
+    
+      let itineraryIndex = findItineraryIndex(friendsCopy[i].origin, index);
+      trip.flights[itineraryIndex].traveler = friendsCopy[i].name;
+    }
+  });
+
+  this.setState({flightData: hold}); 
+}
 
   render() {
     if (this.state.pageNum === 0) {
@@ -111,7 +152,12 @@ export default class App extends React.Component {
     } if (this.state.pageNum === 1) {
       return <TripPreferences changePage={this.changePage} />;
     } if (this.state.pageNum === 2) {
-      return <FlightList changePage={this.changePage} />;
+      return <FlightList 
+        dummyData={this.dummyData}
+        changePage={this.changePage}
+        flightData={this.state.flightData}
+        friends={this.state.friends}
+        />;
     } else if (this.state.pageNum === 3) {
       return <BookTrip changePage={this.changePage} friends={this.state.friends} />;
     } else if (this.state.pageNum === 4) {
