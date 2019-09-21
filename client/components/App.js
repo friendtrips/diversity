@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import TripPreferences from './TripPreferences';
 import FlightList from './FlightList';
-import FlightDetails from './FlightDetails';
 import BookTrip from './BookTrip';
 import PaymentPage from './PaymentPage'
 import Confirmation from './Confirmation';
@@ -13,16 +12,17 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      pageNum: 5,
       tripName: '',
       departureDate: '',
       returnDate: '',
-      friends: [],
+      friends: ['Booke Snelligs','Harry Potter'],
       airports:  ['LGA','JFK', 'MDW','ORD','LAS','SEA','SFO','DCA','MSY','PSP','SAN','STL','SEZ','SDX','HNL','MIA','BBG','BKG','BOS', 'MCO','PDX','BNA','LAX','SAT','AUS','SAV'],
       flightData: []
     };
   }
 
-//Create dummy data
+//Create dummy data, invoke this in your component if you want/need data
 dummyData () {
   let hold = 
     [
@@ -70,9 +70,18 @@ dummyData () {
 
 
   render() {
-    return (
-      <h1>Hello, world!</h1>
-
-    )
+    if (this.state.pageNum ===0) {
+      return (<LandingPage />)
+    } else if (this.state.pageNum === 1) {
+      return (<TripPreferences />)
+    } else if (this.state.pageNum === 2) {
+      return (<FlightList />)
+    } else if (this.state.pageNum === 3) {
+      return (<BookTrip />)
+    } else if (this.state.pageNum === 4) {
+      return (<PaymentPage />)
+    } else if (this.state.pageNum === 5) {
+      return (<Confirmation />)
+    }
   }
 }
