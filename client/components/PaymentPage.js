@@ -3,10 +3,12 @@
 //States Passed Down From App: User Names, Flight Info for Each User, Paid or Not Paid (0=No, 1=Yes)
 import React from 'react';
 
-export default PaymentPage = (props) => {
+const PaymentPage = (props) => {
     return (
         <div>
             <text>Here are Confirmations</text>
         </div>
     )
 }
+
+export default PaymentPage
