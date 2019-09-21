@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default FlightDetails = props => {
+const FlightDetails = props => {
   return <div>FlightDetails</div>;
 };
+
+export default FlightDetails;

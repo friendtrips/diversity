@@ -1,8 +1,7 @@
 import React from 'react';
 
-export default FlightList = (props) => {
-    return (
-        <div>Flight List</div>
-    )
-}
+const FlightList = props => {
+  return <div>Flight List</div>;
+};
 
+export default FlightList;

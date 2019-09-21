@@ -3,7 +3,7 @@
 //States Passed Down From App: User Names
 import React from 'react';
 
-export default BookTrip = props => {
+const BookTrip = props => {
     return (
         <div>
             <text>Here are Confrimations</text>
@@ -11,3 +11,4 @@ export default BookTrip = props => {
     )
 }
 
+export default BookTrip;
