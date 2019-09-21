@@ -1,5 +1,5 @@
-//Summary: This will just tell you the payment is now complete for the trip, a lot of artistic liberties here.
-//States Passed Down From App: Name of the Trip & Usernames
+// Summary: This will just tell you the payment is now complete for the trip, a lot of artistic liberties here.
+// States Passed Down From App: Name of the Trip & Usernames
 import React from 'react';
 
 export default Confirmation = props => {
