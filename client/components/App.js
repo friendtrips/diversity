@@ -1,4 +1,11 @@
 import React from 'react';
+import FlightDetails from './FlightDetails';
+import LandingPage from './LandingPage';
+import FlightList from './FlightList';
+import TripPreferences from './TripPreferences';
+import BookTrip from './BookTrip';
+import PaymentPage from './PaymentPage';
+import Confirmation from './Confirmation';
 
 class App extends React.Component {
   constructor(props) {
