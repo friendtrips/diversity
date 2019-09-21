@@ -13,8 +13,8 @@ export default class App extends React.Component {
     this.state = {
       pageNum: 1,
       tripName: 'BFF Time in The Sun',
-      departureDate: '',
-      returnDate: '',
+      departureDate: new Date(),
+      returnDate: new Date(),
       friends: ['Booke Snelligs', 'Harry Potter'],
       airports: ['LGA', 'JFK', 'MDW', 'ORD', 'LAS', 'SEA', 'SFO', 'DCA', 'MSY', 'PSP', 'SAN', 'STL', 'SEZ', 'SDX', 'HNL', 'MIA', 'BBG', 'BKG', 'BOS', 'MCO', 'PDX', 'BNA', 'LAX', 'SAT', 'AUS', 'SAV'],
       flightData: []
@@ -76,6 +76,12 @@ export default class App extends React.Component {
     this.setState({ flightData: hold })
   }
 
+  handleDateChange(date) {
+    console.log(date);
+    this.setState({
+      departureDate: date
+    })
+  }
 
   render() {
     if (this.state.pageNum === 0) {
@@ -84,7 +90,7 @@ export default class App extends React.Component {
       />)
     } else if (this.state.pageNum === 1) {
       return (<TripPreferences
-        changePage={this.changePage}
+        changePage={this.changePage} returnDate={this.state.returnDate} departureDate={this.state.departureDate} handleDateChange={this.handleDateChange.bind(this)}
       />)
     } else if (this.state.pageNum === 2) {
       return (<FlightList
