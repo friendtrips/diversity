@@ -1,6 +1,5 @@
 import React from 'react';
 
-export default FlightDetails = (props) => {
+export default FlightDetails = props => {
   return <div>FlightDetails</div>;
 };
-
