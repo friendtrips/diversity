@@ -54,9 +54,9 @@ export default class App extends React.Component {
 
 
   // change page, associate this to a button to get to the next page
-  changePage() {
+  changePage(value) {
     let currentPage = this.state.pageNum;
-    currentPage++;
+    currentPage +=value;
     this.setState({ pageNum: currentPage });
   }
   // Create dummy data, invoke this in your component if you want/need data
