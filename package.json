@@ -7,7 +7,8 @@
     "test": "jest",
     "server-dev": "nodemon server",
     "webpack-dev": "webpack --mode=development --watch",
-    "webpack-build": "webpack --mode=production"
+    "webpack-build": "webpack --mode=production",
+    "launch": "npm run webpack-build & npm run server-dev"
   },
   "author": "Brooke Snellings",
   "license": "ISC",
