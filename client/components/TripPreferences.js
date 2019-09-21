@@ -1,8 +1,9 @@
 import React from 'react';
 
-export default TripPreferences = (props) => {
+const TripPreferences = (props) => {
     return (
         <div>Trip Preferences</div>
     )
 }
 
+export default TripPreferences

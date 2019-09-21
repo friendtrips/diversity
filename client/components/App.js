@@ -6,7 +6,7 @@ import TripPreferences from './TripPreferences';
 import FlightList from './FlightList';
 import FlightDetails from './FlightDetails';
 import BookTrip from './BookTrip';
-import PaymentPage from './PaymentPage';
+import PaymentPage from './PaymentPage'
 import Confirmation from './Confirmation';
 
 export default class App extends React.Component {
@@ -24,10 +24,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <h1>Hello, world!</h1>
-        <Route path="/" exact component={LandingPage} />
-      </Router>
+      <h1>Hello, world!</h1>
+
     )
   }
 }
