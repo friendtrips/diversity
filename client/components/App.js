@@ -1,8 +1,8 @@
 import React from 'react';
-import FlightDetails from './FlightDetails';
 import LandingPage from './LandingPage';
-import FlightList from './FlightList';
 import TripPreferences from './TripPreferences';
+import FlightList from './FlightList';
+import FlightDetails from './FlightDetails';
 import BookTrip from './BookTrip';
 import PaymentPage from './PaymentPage';
 import Confirmation from './Confirmation';
@@ -10,7 +10,10 @@ import Confirmation from './Confirmation';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      tripName: '';
+      departureDate:
+    };
   }
 
   render() {
