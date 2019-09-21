@@ -27,12 +27,12 @@ WORKDIR /src/app
 COPY package*.json ./
 
 RUN npm install 
-RUN pwd
+# RUN pwd
 
-COPY init-letsencrypt.sh ./
-RUN ls
-RUN chmod +x init-letsencrypt.sh 
-RUN ./init-letsencrypt.sh
+# COPY init-letsencrypt.sh ./
+# RUN ls
+# RUN chmod +x init-letsencrypt.sh 
+# RUN ./init-letsencrypt.sh
 
 #Bundle app source
 COPY . .
