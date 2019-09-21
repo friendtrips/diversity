@@ -37,7 +37,7 @@ const FlightList = props => {
             <TableCell align="center">{trip.totalCost/props.friends.length}</TableCell>
             <TableCell align="center">
               <Button variant="outlined" color="primary" onClick={() => handleClickOpen(index)}>
-                Trip Detail
+                Trip Detail hooray
               </Button>
               <FlightDetails flightData={props.flightData} friends={props.friends} selectedValue={selectedValue} open={open} onClose={handleClose} />
             </TableCell>
