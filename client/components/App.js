@@ -12,10 +12,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 1,
+      pageNum: 3,
       tripName: 'BFF Time in The Sun',
       departureDate: '',
       returnDate: '',
+      email:[],
       friends: ['Booke Snelligs','Harry Potter'],
       airports:  ['LGA','JFK', 'MDW','ORD','LAS','SEA','SFO','DCA','MSY','PSP','SAN','STL','SEZ','SDX','HNL','MIA','BBG','BKG','BOS', 'MCO','PDX','BNA','LAX','SAT','AUS','SAV'],
       flightData: []
@@ -25,11 +26,13 @@ export default class App extends React.Component {
   }
 
 //change page, associate this to a button to get to the next page
-changePage() {
+changePage(value) {
   let currentPage = this.state.pageNum
-  currentPage++
+  currentPage +=value
   this.setState({pageNum: currentPage})
 }
+
+
 
 //Create dummy data, invoke this in your component if you want/need data
 dummyData () {
