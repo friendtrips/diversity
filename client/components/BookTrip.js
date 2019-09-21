@@ -6,7 +6,7 @@ import React from 'react';
 const BookTrip = props => {
     return (
         <div>
-            <text>Here are Confrimations</text>
+            <text>Here is the Booking Page</text>
         </div>
     )
 }
