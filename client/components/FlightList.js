@@ -1,4 +1,5 @@
 import React from 'react';
+import FlightDetails from './FlightDetails';
 
 const FlightList = (props) => {
     return (

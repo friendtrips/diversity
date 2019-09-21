@@ -6,7 +6,7 @@ import React from 'react';
 const PaymentPage = (props) => {
     return (
         <div>
-            <text>Here are Confirmations</text>
+            <text>Here is the Payment Page</text>
         </div>
     )
 }
