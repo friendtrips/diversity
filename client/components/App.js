@@ -12,7 +12,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 3,
+      pageNum: 4,
       tripName: 'BFF Time in The Sun',
       departureDate: '',
       returnDate: '',
@@ -33,45 +33,56 @@ changePage(value) {
 }
 
 
-
+componentDidMount(){
+  this.dummyData()
+}
 //Create dummy data, invoke this in your component if you want/need data
 dummyData () {
   let hold = 
     [
       {
-        destinationLocation: 'SFO',
         flights: [
           {
+            name: "Booke Snelligs",
             itinerary: { /* This is going to be the itinerary for friend 1 */
               departureFlight: {
                 departureTime: '2019-10-15T07:20:00',
                 arrivalTime: '2019-10-15T10:00:00',
-                airportCode: 'AUS'
+                leavingFrom: 'AUS',
+                arrivingAt: 'SFO',
+                airline: 'Southwest',
+                flightNumber: 'HE9865'
               },
               returnFlight: {
                 departureTime: '2019-10-20T15:10:00',
                 arriveTime: '2019-10-20T18:30:00',
-                airportCode: 'AUS'
+                leavingFrom: 'SFO',
+                arrivingAt: 'AUS',
+                airline: 'Southwest',
+                flightNumber: 'SHE8621'
               }
             },
-            flightNumber: 'HE9865',
-            airline: 'Southwest'
           },
           {
+            name: "Harry Potter",
             itinerary: { /* This is going to be the itinerary for friend 2 */
               departureFlight: {
                 departureTime: '2019-10-15T06:50:00',
                 arrivalTime: '2019-10-15T10:00:00',
-                airportCode: 'SAT'
+                leavingFrom: 'SAT',
+                arrivingAt: 'SFO',
+                airline: 'Delta',
+                flightNumber: '98ST78'
               },
               returnFlight: {
                 departureTime: '2019-10-20T14:10:00',
                 arriveTime: '2019-10-20T17:30:00',
-                airportCode: 'SAT'
+                leavingFrom: 'SFO',
+                arrivingAt: 'SAT',
+                airline: 'Delta',
+                flightNumber: 'LO68724'
               }
             },
-            flightNumber: 'R8675',
-            airline: 'Delta'
           }
         ],
         totalCost: 500
@@ -102,7 +113,6 @@ dummyData () {
     } else if (this.state.pageNum === 4) {
       return (<PaymentPage
         changePage={this.changePage} 
-        friends={this.state.friends}
         flightData={this.state.flightData}
         dummyData={this.dummyData}
         />)
