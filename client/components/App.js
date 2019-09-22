@@ -14,7 +14,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 1,
+      pageNum: 0,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
@@ -83,16 +83,16 @@ export default class App extends React.Component {
                 flightNumber: 'HE9865',
               }
             },
-    
+
           },
         ],
       }
 
     ];
-    this.setState({ 
+    this.setState({
       flightData: hold,
-      friends: [{name:'Booke Snelligs', origin:'AUS'},
-      {name:'Harry Potty', origin:'SAT'}]
+      friends: [{ name: 'Booke Snelligs', origin: 'AUS' },
+      { name: 'Harry Potty', origin: 'SAT' }]
 
     }, () => this.updateDataWithNames());
 
@@ -182,9 +182,9 @@ export default class App extends React.Component {
     hold[0].flights.forEach(flight => {
       if (person === flight.traveler) {
         flight.paid = true
-      } 
+      }
     })
-    this.setState({flightData: hold })
+    this.setState({ flightData: hold })
     setTimeout(() => {
       let count = this.state.flightData[0].flights.length
       this.state.flightData[0].flights.forEach(flight => {
@@ -193,11 +193,11 @@ export default class App extends React.Component {
         }
       })
       console.log(count)
-      if (count === 0 ) {
+      if (count === 0) {
         this.changePage(1)
         console.log(count)
       }
-    },10)
+    }, 10)
   }
 
   componentWillMount() {
@@ -205,7 +205,7 @@ export default class App extends React.Component {
   }
 
   render() {
-   
+
     if (this.state.pageNum === 0) {
       return (<LandingPage
         changePage={this.changePage}
@@ -244,8 +244,8 @@ export default class App extends React.Component {
           dummyData={this.dummyData}
         />
       );
-    } else if (this.state.pageNum === 5) {    
+    } else if (this.state.pageNum === 5) {
       return <Confirmation tripName={this.state.tripName} />;
+    }
   }
-}
 }

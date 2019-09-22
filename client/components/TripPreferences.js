@@ -27,7 +27,6 @@ const TripPreferences = (props) => {
                                 variant="outlined"
                                 value={props.tripName}
                                 onChange={() => {
-                                    console.log(event.target.value)
                                     props.handleUserInput({ tripName: event.target.value })
                                 }}
                             />
