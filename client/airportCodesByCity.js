@@ -31,4 +31,5 @@ const findAirportCodes = obj => {
 
 const airportCodesArray = findAirportCodes(airportCodesByCity);
 
+
 export default { airportCodesByCity, airportCodesArray };

@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import TripPreferences from './TripPreferences';
 import FlightList from './FlightList';
@@ -8,60 +7,34 @@ import BookTrip from './BookTrip';
 import PaymentPage from './PaymentPage';
 import Confirmation from './Confirmation';
 
+import axios from 'axios';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 4,
-      tripName: 'BFF Time in The Sun',
-      departureDate: '',
-      returnDate: '',
-      friends: [{name:'Booke Snelligs', origin: 'AUS'}, 
-                {name: 'Harry Potter', origin: 'SAT'} ],
-      airports: [
-        'LGA',
-        'JFK',
-        'MDW',
-        'ORD',
-        'LAS',
-        'SEA',
-        'SFO',
-        'DCA',
-        'MSY',
-        'PSP',
-        'SAN',
-        'STL',
-        'SEZ',
-        'SDX',
-        'HNL',
-        'MIA',
-        'BBG',
-        'BKG',
-        'BOS',
-        'MCO',
-        'PDX',
-        'BNA',
-        'LAX',
-        'SAT',
-        'AUS',
-        'SAV'
-      ],
+      pageNum: 3,
+      tripName: '',
+      departureDate: new Date(),
+      returnDate: new Date(),
+      friends: [],
+      airports: ['LGA', 'JFK', 'MDW', 'ORD', 'LAS', 'SEA', 'SFO', 'DCA', 'MSY', 'PSP', 'SAN', 'STL', 'SEZ', 'SDX', 'HNL', 'MIA', 'BBG', 'BKG', 'BOS', 'MCO', 'PDX', 'BNA', 'LAX', 'SAT', 'AUS', 'SAV'],
       flightData: []
     };
-    this.dummyData = this.dummyData.bind(this);
-    this.changePage = this.changePage.bind(this);
-    this.updateDataWithNames = this.updateDataWithNames.bind(this);
+    this.dummyData = this.dummyData.bind(this)
+    this.changePage = this.changePage.bind(this)
+    this.updateDataWithNames = this.updateDataWithNames.bind(this)
+    this.handleUserInput = this.handleUserInput.bind(this)
   }
 
-
-  // change page, associate this to a button to get to the next page
+  //change page, associate this to a button to get to the next page
   changePage(value) {
     let currentPage = this.state.pageNum;
-    currentPage +=value;
+    currentPage += value;
     this.setState({ pageNum: currentPage });
   }
-  // Create dummy data, invoke this in your component if you want/need data
+
+  //Create dummy data, invoke this in your component if you want/need data
   dummyData() {
     const hold = [
       {
@@ -77,16 +50,10 @@ export default class App extends React.Component {
                 flightNumber: 'HE9865',
                 airline: 'Southwest'
               },
-              returnFlight: {
-                departureTime: '2019-10-20T15:10:00',
-                arriveTime: '2019-10-20T18:30:00',
-                leavingFrom: 'SFO',
-                arrivingAt: 'AUS',
-                flightNumber: 'HE9865',
-                airline: 'Southwest'
-              }
+              flightNumber: 'HE9865',
+              airline: 'Southwest'
             },
-            
+
           },
           {
             itinerary: {
@@ -98,67 +65,134 @@ export default class App extends React.Component {
                 flightNumber: 'R8675',
                 airline: 'Delta'
               },
-              returnFlight: {
-                departureTime: '2019-10-20T14:10:00',
-                arriveTime: '2019-10-20T17:30:00',
-                leavingFrom: 'SFO',
-                arrivingAt: 'SAT',
-                flightNumber: 'R8675',
-                airline: 'Delta'
-              }
+              flightNumber: 'R8675',
+              airline: 'Delta'
             },
-          }
+            totalCost: 500,
+          },
         ],
-        totalCost: 500
       }
+
     ];
-    this.setState({ flightData: hold }, () => this.updateDataWithNames());
+    this.setState({ 
+      flightData: hold,
+      friends: [{name:'Booke Snelligs', origin:'AUS'},
+      {name:'Harry Potty', origin:'SAT'}]
+
+    }, () => this.updateDataWithNames());
+
   }
-  
-  componentWillMount () {
-    
-    this.dummyData();
-   
 
-  };
+  selectDepartureDate(date) {
+    this.setState({ departureDate: date })
+  }
 
-updateDataWithNames() {
-  const findItineraryIndex = (origin, index) => {
-    for (let i = 0; i < this.state.flightData[index].flights.length; i++){
-      if (origin === this.state.flightData[index].flights[i].itinerary.departureFlight.leavingFrom) {
-        return i;
+  selectReturnDate(date) {
+    this.setState({ returnDate: date })
+  }
+
+  handleUserInput(event) {
+    console.log(event)
+    this.setState(event)
+  }
+
+  handleClickOnFindFlights() {
+    this.fetchFlightData();
+  }
+
+
+  addTraveler(friend) {
+    if (this.state.friends.length < 5) {
+      this.setState({
+        friends: [...this.state.friends, { name: '', origin: '' }]
+      })
+    }
+  }
+
+  handleAddTravelerInfo(idx, event, key) {
+    const newFriends = this.state.friends.slice();
+    newFriends[idx][key] = event.target.value
+    this.setState({ friends: newFriends })
+  }
+
+
+  updateDataWithNames() {
+    const findItineraryIndex = (origin, index) => {
+      for (let i = 0; i < this.state.flightData[index].flights.length; i++) {
+        if (origin === this.state.flightData[index].flights[i].itinerary.departureFlight.leavingFrom) {
+          return i;
+        }
       }
     }
+
+    const friendsCopy = this.state.friends.slice();
+    const hold = this.state.flightData;
+
+    hold.forEach((trip, index) => {
+      for (let i = 0; i < friendsCopy.length; i++) {
+
+        let itineraryIndex = findItineraryIndex(friendsCopy[i].origin, index);
+        trip.flights[itineraryIndex].traveler = friendsCopy[i].name;
+        trip.flights[itineraryIndex].paid = false
+      }
+    });
+
+    this.setState({ flightData: hold });
   }
-  
-  const friendsCopy = this.state.friends.slice();
-  const hold = this.state.flightData;
 
-  hold.forEach((trip, index) => {
-    for (let i = 0; i < friendsCopy.length; i++) {
-    
-      let itineraryIndex = findItineraryIndex(friendsCopy[i].origin, index);
-      trip.flights[itineraryIndex].traveler = friendsCopy[i].name;
-      trip.flights[itineraryIndex].paid = false
-    }
-  });
+  fetchFlightData() {
+    console.log('fetching flight data')
+    let departures = this.state.friends.map(friend => {
+      return friend.origin
+    })
+    axios.post('/flights', {
+      airportDepartures: departures,
+      airportDestinations: this.state.airports,
+      departureDate: this.state.departureDate,
+      returnDate: this.state.returnDate
+    })
+      .then(response => {
+        console.log(response.data)
+        this.setState({
+          flightData: response.data
+        })
+      })
+      .catch(function (error) {
+        console.log('error fetching flight data:', error);
+      });
+  }
 
-  this.setState({flightData: hold}); 
-}
+  componentWillMount() {
+    this.dummyData();
+  };
 
   render() {
     if (this.state.pageNum === 0) {
-      return <LandingPage changePage={this.changePage} />;
-    } if (this.state.pageNum === 1) {
-      return <TripPreferences changePage={this.changePage} />;
-    } if (this.state.pageNum === 2) {
-      return <FlightList 
+      return (<LandingPage
+        changePage={this.changePage}
+      />)
+    } else if (this.state.pageNum === 1) {
+      return (<TripPreferences
+        changePage={this.changePage}
+        handleUserInput={this.handleUserInput}
+        tripName={this.state.tripName}
+        returnDate={this.state.returnDate}
+        departureDate={this.state.departureDate}
+        selectDepartureDate={this.selectDepartureDate.bind(this)}
+        selectReturnDate={this.selectReturnDate.bind(this)}
+        handleClickOnFindFlights={this.handleClickOnFindFlights.bind(this)}
+        friends={this.state.friends}
+        addTraveler={this.addTraveler.bind(this)}
+        handleAddTravelerInfo={this.handleAddTravelerInfo.bind(this)}
+      />)
+    } else if (this.state.pageNum === 2) {
+      return <FlightList
         dummyData={this.dummyData}
         changePage={this.changePage}
         flightData={this.state.flightData}
         friends={this.state.friends}
         tripName={this.state.tripName}
-        />;
+      />;
     } else if (this.state.pageNum === 3) {
       return <BookTrip changePage={this.changePage} friends={this.state.friends} />;
     } else if (this.state.pageNum === 4) {

@@ -101,7 +101,7 @@ const PaymentPage = ({changePage, flightData}) => {
                         </Grid>
                         {/* Flight Details */}
                         <Grid item xs={12} className={classes.flightField}>
-                            Departure Flight: {flight.itinerary.departureFlight.airlime} {flight.itinerary.departureFlight.flightNumber} on {flight.itinerary.departureFlight.departureTime.slice(0,10)}
+                            Departure Flight: {flight.itinerary.departureFlight.airline} {flight.itinerary.departureFlight.flightNumber} on {flight.itinerary.departureFlight.departureTime.slice(0,10)}
                         </Grid>
                         <Grid item xs={12} className={classes.flightField}>
                             Departs: {flight.itinerary.departureFlight.leavingFrom} @ 
@@ -110,7 +110,7 @@ const PaymentPage = ({changePage, flightData}) => {
                         </Grid>
                         <Grid item xs={12} className={classes.spaceingFlight}> </Grid>
                         <Grid item xs={12} className={classes.flightField}>
-                            Retunring Flight: {flight.itinerary.returnFlight.airlime} {flight.itinerary.returnFlight.flightNumber} on {flight.itinerary.departureFlight.departureTime.slice(0,10)}
+                            Retunring Flight: {flight.itinerary.returnFlight.airline} {flight.itinerary.returnFlight.flightNumber} on {flight.itinerary.departureFlight.departureTime.slice(0,10)}
                         </Grid>
                         <Grid item xs={12} className={classes.flightField}>
                             Departs: {flight.itinerary.returnFlight.leavingFrom} @ 
