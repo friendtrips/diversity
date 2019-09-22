@@ -13,7 +13,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 0,
+      pageNum: 3,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
@@ -72,8 +72,15 @@ export default class App extends React.Component {
           },
         ],
       }
+
     ];
-    this.setState({ flightData: hold }, () => this.updateDataWithNames());
+    this.setState({ 
+      flightData: hold,
+      friends: [{name:'Booke Snelligs', origin:'AUS'},
+      {name:'Harry Potty', origin:'SAT'}]
+
+    }, () => this.updateDataWithNames());
+
   }
 
   selectDepartureDate(date) {
@@ -126,6 +133,7 @@ export default class App extends React.Component {
 
         let itineraryIndex = findItineraryIndex(friendsCopy[i].origin, index);
         trip.flights[itineraryIndex].traveler = friendsCopy[i].name;
+        trip.flights[itineraryIndex].paid = false
       }
     });
 
