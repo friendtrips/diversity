@@ -38,6 +38,7 @@ export default class App extends React.Component {
   dummyData() {
     const hold = [
       {
+        totalCost: 500,
         flights: [
           {
             itinerary: {
@@ -80,7 +81,6 @@ export default class App extends React.Component {
                 flightNumber: 'HE9865',
               }
             },
-            totalCost: 500,
           },
         ],
       }
