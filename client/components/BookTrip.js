@@ -11,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -48,7 +48,7 @@ const BookTrip = ({changePage, friends}) => {
     const classes = useStyles();
    
     return (
-    //     <Container>
+
         <>
              <div>
                 <h2>Logo</h2>
@@ -94,9 +94,6 @@ const BookTrip = ({changePage, friends}) => {
     </>
     )
 }
-
-
-
 
 
 

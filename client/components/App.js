@@ -8,6 +8,7 @@ import BookTrip from './BookTrip';
 import PaymentPage from './PaymentPage';
 import Confirmation from './Confirmation';
 
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -138,6 +139,7 @@ updateDataWithNames() {
     
       let itineraryIndex = findItineraryIndex(friendsCopy[i].origin, index);
       trip.flights[itineraryIndex].traveler = friendsCopy[i].name;
+      trip.flights[itineraryIndex].paid = false
     }
   });
 
