@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 
 const BookTrip = ({changePage, friends}) => {
     const classes = useStyles();
-
+   
     return (
         <>
         <div>
@@ -62,7 +62,7 @@ const BookTrip = ({changePage, friends}) => {
                 </TableHead>
                 <TableBody>
                 {friends.map(friend => (
-                    <TableRow>
+                    <TableRow key={friend.name}>
                         <TableCell align="center" className={classes.nameField} component="th" scope="row">
                             {friend}
                         </TableCell>
