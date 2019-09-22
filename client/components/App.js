@@ -13,7 +13,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 1,
+      pageNum: 0,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
@@ -138,7 +138,7 @@ export default class App extends React.Component {
         })
       })
       .catch(function (error) {
-        console.log(error);
+        console.log('error fetching flight data:', error);
       });
   }
 

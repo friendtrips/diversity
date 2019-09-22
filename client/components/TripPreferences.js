@@ -8,8 +8,10 @@ import {
 
 const TripPreferences = (props) => {
     return (
-        <>
-            <Paper>
+        <div style={{
+            minWidth: '1024px', minHeight: '100%', backgroundImage: `url(https://pixabay.com/get/55e8dd4a4b55b108feda8460825668204022dfe05558704b772e7dd3/golden-gate-bridge-388917_1920.jpg)`
+        }}>
+            <Paper style={{ padding: '32px', width: '525px' }}>
                 <Typography variant="h5" component="h3">
                     Let's plan a trip!
                     </Typography>
@@ -70,7 +72,7 @@ const TripPreferences = (props) => {
                 </form>
                 <Button onClick={props.handleClickOnFindFlights}>Find Flights</Button>
             </Paper>
-        </>
+        </div >
     )
 }
 
