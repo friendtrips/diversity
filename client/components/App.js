@@ -14,7 +14,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 0,
+      pageNum: 5,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
@@ -92,8 +92,8 @@ export default class App extends React.Component {
     this.setState({
       flightData: hold,
       friends: [{ name: 'Booke Snelligs', origin: 'AUS' },
-      { name: 'Harry Potty', origin: 'SAT' }]
-
+      { name: 'Harry Potty', origin: 'SAT' }],
+      tripName: 'Rugrats in Paris'
     }, () => this.updateDataWithNames());
 
   }
@@ -243,7 +243,10 @@ export default class App extends React.Component {
         />
       );
     } else if (this.state.pageNum === 5) {
-      return <Confirmation tripName={this.state.tripName} />;
+      return <Confirmation 
+      tripName={this.state.tripName} 
+      changePage={this.changePage}
+      />;
     }
   }
 }
