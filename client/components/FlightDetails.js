@@ -1,11 +1,15 @@
 import React from 'react';
-import {Dialog, DialogTitle, Table, TableHead, TableRow, TableCell, TableBody, Grid} from '@material-ui/core';
+import {Dialog, DialogTitle, Table, TableHead, TableRow, TableCell, TableBody, Grid, Button} from '@material-ui/core';
 
 const FlightDetails = props => {
-  const { onClose, selectedValue, open, flightData, tripName} = props;
+  const { changePage, onClose, selectedValue, open, flightData, tripName} = props;
 
   function handleClose() {
     onClose();
+  }
+
+  function bookTrip() {
+    changePage(1);
   }
 
 
@@ -68,6 +72,7 @@ const FlightDetails = props => {
             ))}
           </TableBody>
       </Table>
+      <Button variant="outlined" color="primary" onClick={bookTrip}>Book Trip!</Button>
       </Dialog>
     );
   } else {

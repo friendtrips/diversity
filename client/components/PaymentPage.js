@@ -3,6 +3,11 @@
 //States Passed Down From App: User Names, Flight Info for Each User, Paid or Not Paid (0=No, 1=Yes)
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+// import Paper from '@material-ui/core/Paper';
+// import TextField from '@material-ui/core/TextField';
+// import Button from '@material-ui/core/Button';
+// import { Grid } from '@material-ui/core';
+import Header from './Header';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -63,11 +68,11 @@ const PaymentPage = ({changePage, flightData}) => {
     const classes = useStyles();
     return (
 
+        
         <>
-            <div>
-                <h2>Logo</h2>
-                <hr></hr>
-            </div>
+          <Header />
+            
+         
             <h2>Payment Page</h2>
             <Paper>
                 <Grid >
@@ -99,7 +104,7 @@ const PaymentPage = ({changePage, flightData}) => {
                             label="Paid?"
                             />
                         </Grid>
-                        {/* Flight Details */}
+                        {/* Flight Details*/}
                         <Grid item xs={12} className={classes.flightField}>
                             Departure Flight: {flight.itinerary.departureFlight.airline} {flight.itinerary.departureFlight.flightNumber} on {flight.itinerary.departureFlight.departureTime.slice(0,10)}
                         </Grid>
@@ -125,9 +130,10 @@ const PaymentPage = ({changePage, flightData}) => {
                 onClick={()=> changePage(-1)}>
                     Back To Friend's Contact
             </Button>    
-
-        </>
+         </>
+        
     )
 }
 
-export default PaymentPage
+export default PaymentPage;
+

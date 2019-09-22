@@ -13,7 +13,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 3,
+      pageNum: 4,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
@@ -50,8 +50,14 @@ export default class App extends React.Component {
                 flightNumber: 'HE9865',
                 airline: 'Southwest'
               },
-              flightNumber: 'HE9865',
-              airline: 'Southwest'
+              returnFlight: {
+                departureTime: '2019-10-17T07:20:00',
+                arriveTime: '2019-10-17T10:00:00',
+                leavingFrom: 'SFO',
+                arrivingAt: 'AUS',
+                airline: 'Southwest',
+                flightNumber: 'HE9865',
+              }
             },
 
           },
@@ -65,8 +71,14 @@ export default class App extends React.Component {
                 flightNumber: 'R8675',
                 airline: 'Delta'
               },
-              flightNumber: 'R8675',
-              airline: 'Delta'
+              returnFlight: {
+                departureTime: '2019-10-17T07:20:00',
+                arriveTime: '2019-10-17T10:00:00',
+                leavingFrom: 'SFO',
+                arrivingAt: 'SAT',
+                airline: 'Southwest',
+                flightNumber: 'HE9865',
+              }
             },
             totalCost: 500,
           },
@@ -167,6 +179,7 @@ export default class App extends React.Component {
   };
 
   render() {
+   
     if (this.state.pageNum === 0) {
       return (<LandingPage
         changePage={this.changePage}
@@ -204,8 +217,8 @@ export default class App extends React.Component {
           dummyData={this.dummyData}
         />
       );
-    } else if (this.state.pageNum === 5) {
+    } else if (this.state.pageNum === 5) {    
       return <Confirmation tripName={this.state.tripName} />;
-    }
   }
+}
 }

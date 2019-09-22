@@ -5,9 +5,12 @@ import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker
 } from '@material-ui/pickers';
+import Header from './Header';
 
 const TripPreferences = (props) => {
     return (
+        <>
+        <Header />
         <div>
             <Paper style={{ padding: '32px', width: '525px' }}>
                 <Typography variant="h5" component="h3">
@@ -93,6 +96,7 @@ const TripPreferences = (props) => {
                 }}>Find Flights</Button></Grid>
             </Paper>
         </div >
+        </>
     )
 }
 
