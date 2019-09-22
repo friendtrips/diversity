@@ -49,7 +49,7 @@ const BookTrip = ({changePage, friends}) => {
     const classes = useStyles();
    
     return (
-    //     <Container>
+
         <>
         <Header />
           
@@ -93,9 +93,6 @@ const BookTrip = ({changePage, friends}) => {
     </>
     )
 }
-
-
-
 
 
 
