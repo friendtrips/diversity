@@ -19,6 +19,11 @@ const TripPreferences = (props) => {
                         label="Trip Name"
                         margin="normal"
                         variant="outlined"
+                        value={props.tripName}
+                        onChange={() => {
+                            console.log(event.target.value)
+                            props.handleUserInput({ tripName: event.target.value })
+                        }}
                     />
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Grid container justify="space-around">
@@ -30,7 +35,7 @@ const TripPreferences = (props) => {
                                 id="date-picker-inline"
                                 label="Departure Date"
                                 value={props.departureDate}
-                                onChange={props.handleDateChange}
+                                onChange={props.selectDepartureDate}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
@@ -43,7 +48,7 @@ const TripPreferences = (props) => {
                                 id="date-picker-inline"
                                 label="Return Date"
                                 value={props.returnDate}
-                                onChange={props.handleDateChange}
+                                onChange={props.selectReturnDate}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
