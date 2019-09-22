@@ -28,10 +28,10 @@ export default class App extends React.Component {
   }
 
   //change page, associate this to a button to get to the next page
-  changePage() {
-    let currentPage = this.state.pageNum
-    currentPage++
-    this.setState({ pageNum: currentPage })
+  changePage(value) {
+    let currentPage = this.state.pageNum;
+    currentPage += value;
+    this.setState({ pageNum: currentPage });
   }
 
   //Create dummy data, invoke this in your component if you want/need data
@@ -73,7 +73,7 @@ export default class App extends React.Component {
         ],
       }
     ];
-    this.setState({ flightData: hold });
+    this.setState({ flightData: hold }, () => this.updateDataWithNames());
   }
 
   selectDepartureDate(date) {
