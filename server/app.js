@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/flights', (req, res) => {
   const data = req.body;
+  console.log(data);
   getFlights(res, data);
 });
 
