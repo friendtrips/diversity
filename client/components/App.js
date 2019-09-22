@@ -100,9 +100,11 @@ export default class App extends React.Component {
 
 
   addTraveler(friend) {
-    this.setState({
-      friends: [...this.state.friends, { name: '', origin: '' }]
-    })
+    if (this.state.friends.length < 5) {
+      this.setState({
+        friends: [...this.state.friends, { name: '', origin: '' }]
+      })
+    }
   }
 
   handleAddTravelerInfo(idx, event, key) {

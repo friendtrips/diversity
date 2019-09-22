@@ -60,15 +60,13 @@ const TripPreferences = (props) => {
                             </Grid>
                         </MuiPickersUtilsProvider>
 
-                        <Grid>
-                            <Button variant="contained" inline onClick={props.addTraveler}>
-                                Add Traveler
+                        <Button variant="contained" style={{ width: '100%', marginTop: '15px' }} onClick={props.addTraveler}>
+                            Add Traveler
                             </Button>
-                        </Grid>
                         {props.friends.length ? props.friends.map((friend, idx) => (
-                            <div>
+                            <Grid container justify="space-between">
                                 <TextField
-                                    id="outlined-name"
+                                    style={{ width: '49%' }}
                                     label="Name"
                                     margin="normal"
                                     variant="outlined"
@@ -76,21 +74,20 @@ const TripPreferences = (props) => {
                                     onChange={(event) => { props.handleAddTravelerInfo(idx, event, 'name') }}
                                 />
                                 <TextField
-                                    id="outlined-name"
+                                    style={{ width: '49%' }}
                                     label="Departing Airport"
                                     margin="normal"
                                     variant="outlined"
                                     value={friend.origin}
                                     onChange={(event) => { props.handleAddTravelerInfo(idx, event, 'origin') }}
                                 />
-                            </div>))
+                            </Grid>))
                             : null
                         }
 
-
                     </Grid>
                 </form>
-                <Grid><Button variant="contained" onClick={props.handleClickOnFindFlights}>Find Flights</Button></Grid>
+                <Grid><Button variant="contained" style={{ width: '100%', marginTop: '10px' }} onClick={props.handleClickOnFindFlights}>Find Flights</Button></Grid>
             </Paper>
         </div >
     )
