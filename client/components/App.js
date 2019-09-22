@@ -13,7 +13,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 3,
+      pageNum: 0,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
@@ -191,10 +191,8 @@ export default class App extends React.Component {
           count--
         }
       })
-      console.log(count)
       if (count === 0 ) {
         this.changePage(1)
-        console.log(count)
       }
     },10)
   }
