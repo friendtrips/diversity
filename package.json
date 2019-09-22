@@ -4,7 +4,7 @@
   "description": "A React/Babel/Webpack/Express template for personal projects",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "npm run webpack-build && node server/index.js",
     "test": "jest",
     "server-dev": "nodemon server",
     "webpack-dev": "webpack --mode=development --watch",
