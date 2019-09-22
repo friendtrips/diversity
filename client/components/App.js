@@ -7,6 +7,7 @@ import BookTrip from './BookTrip';
 import PaymentPage from './PaymentPage';
 import Confirmation from './Confirmation';
 
+import { format } from 'date-fns'
 import axios from 'axios';
 
 export default class App extends React.Component {
@@ -77,6 +78,7 @@ export default class App extends React.Component {
   }
 
   selectDepartureDate(date) {
+    console.log(date)
     this.setState({ departureDate: date })
   }
 
@@ -85,7 +87,6 @@ export default class App extends React.Component {
   }
 
   handleUserInput(event) {
-    console.log(event)
     this.setState(event)
   }
 
@@ -94,7 +95,7 @@ export default class App extends React.Component {
   }
 
 
-  addTraveler(friend) {
+  addTraveler() {
     if (this.state.friends.length < 5) {
       this.setState({
         friends: [...this.state.friends, { name: '', origin: '' }]
@@ -140,14 +141,14 @@ export default class App extends React.Component {
     axios.post('/flights', {
       airportDepartures: departures,
       airportDestinations: this.state.airports,
-      departureDate: this.state.departureDate,
-      returnDate: this.state.returnDate
+      departureDate: format(this.state.departureDate, 'yyyy-MM-dd'),
+      returnDate: format(this.state.returnDate, 'yyyy-MM-dd')
     })
       .then(response => {
         console.log(response.data)
-        this.setState({
-          flightData: response.data
-        })
+        // this.setState({
+        //   flightData: response.data
+        // })
       })
       .catch(function (error) {
         console.log('error fetching flight data:', error);

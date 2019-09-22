@@ -32,6 +32,7 @@ const TripPreferences = (props) => {
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <Grid container justify="space-around">
                                 <KeyboardDatePicker
+                                    disablePast
                                     disableToolbar
                                     variant="inline"
                                     format="MM/dd/yyyy"
@@ -45,6 +46,7 @@ const TripPreferences = (props) => {
                                     }}
                                 />
                                 <KeyboardDatePicker
+                                    disablePast
                                     disableToolbar
                                     variant="inline"
                                     format="MM/dd/yyyy"
