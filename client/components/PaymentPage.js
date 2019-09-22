@@ -15,6 +15,7 @@ import { Grid } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { green } from '@material-ui/core/colors';
+import backgroundImage from '../../dist/beach.jpg';
 
 
 const useStyles = makeStyles(theme => ({
@@ -67,7 +68,12 @@ const PaymentPage = ({changePage, flightData, handlePay}) => {
     return (
 
         
-        <>
+        <div style={{
+            backgroundImage: `url(${backgroundImage})`,
+            height: '100vh', 
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'}}>>
           <Header />
             <h2>Payment Page</h2>
             <Paper>
@@ -126,7 +132,7 @@ const PaymentPage = ({changePage, flightData, handlePay}) => {
                 onClick={()=> changePage(-1)}>
                     Back To Friend's Contact
             </Button>    
-         </>
+         </div>
         
     )
 }

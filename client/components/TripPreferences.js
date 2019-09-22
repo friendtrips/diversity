@@ -6,10 +6,16 @@ import {
     KeyboardDatePicker
 } from '@material-ui/pickers';
 import Header from './Header';
+import backgroundImage from '../../dist/beach.jpg';
 
 const TripPreferences = (props) => {
     return (
-        <>
+        <div style={{
+            backgroundImage: `url(${backgroundImage})`,
+            height: '100vh', 
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'}}>
         <Header />
         <div>
             <Paper style={{ padding: '32px', width: '525px' }}>
@@ -96,7 +102,7 @@ const TripPreferences = (props) => {
                 }}>Find Flights</Button></Grid>
             </Paper>
         </div >
-        </>
+        </div>
     )
 }
 

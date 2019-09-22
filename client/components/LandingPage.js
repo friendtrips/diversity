@@ -3,6 +3,7 @@ import { Button } from '@material-ui/core';
 
 
 const LandingPage = (props) => {
+  
   return (
     <div className="overlay">
       <div className="video-overlay"></div>
