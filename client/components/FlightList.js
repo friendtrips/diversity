@@ -22,7 +22,13 @@ const FlightList = props => {
   return (
     
     
-    <div className="FlightList">
+    <div className="FlightList" style={  {backgroundImage: `url(${backgroundImage})`,
+      height: '100vh', 
+    
+      /* Center and scale the image nicely */
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover'}}>
   <Header />
     <Grid container direction="column" style={{width: '90%', marginLeft: 40, alignContent: 'flex-start'}}>
       

@@ -6,15 +6,21 @@ import {
     KeyboardDatePicker
 } from '@material-ui/pickers';
 import Header from './Header';
+import backgroundImage from '../../dist/beach.jpg';
 
 const TripPreferences = (props) => {
     return (
-        <>
-            <Header />
-            <div>
-                <Paper style={{ padding: '32px', width: '525px' }}>
-                    <Typography variant="h5" component="h3">
-                        Let's plan a trip!
+        <div style={{
+            backgroundImage: `url(${backgroundImage})`,
+            height: '100vh', 
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'}}>
+        <Header />
+        <div>
+            <Paper style={{ padding: '32px', width: '525px' }}>
+                <Typography variant="h5" component="h3">
+                    Let's plan a trip!
                     </Typography>
 
                     <form>
@@ -89,15 +95,15 @@ const TripPreferences = (props) => {
                                 : null
                             }
 
-                        </Grid>
-                    </form>
-                    <Grid><Button variant="contained" style={{ width: '100%', marginTop: '10px' }} onClick={() => {
-                        props.handleClickOnFindFlights();
-                        props.changePage(1)
-                    }}>Find Flights</Button></Grid>
-                </Paper>
-            </div >
-        </>
+                    </Grid>
+                </form>
+                <Grid><Button variant="contained" style={{ width: '100%', marginTop: '10px' }} onClick={() => {
+                    props.handleClickOnFindFlights();
+                    props.changePage(1)
+                }}>Find Flights</Button></Grid>
+            </Paper>
+        </div >
+        </div>
     )
 }
 
