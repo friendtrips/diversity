@@ -41,28 +41,23 @@ const PaymentPage = ({changePage, flightData}) => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            {/* <div>
+            <div>
                 <h2>Logo</h2>
                 <hr></hr>
-            </div> */}
-            {console.log(flightData[0].flights)}
-            {/* <Paper className={classes.root}> */}
+            </div>
+            <h2>Payment Page</h2>
+            <Paper>
                 <Grid >
                     {flightData[0].flights.map(flight => (
-                        <Grid item xs={12}>
-                            flight.traveler
+                        <Grid item xs={8}>
+                            {flight.traveler}
+                        </Grid>
+                        <Grid item xs={4}>
+
                         </Grid>
                 ))}
                 </Grid>
-                {/* {flightData[0].flights.map(flight => {
-                        {console.log(flight.traveler)}
-                        <text>
-                            "Do you see this??
-                        </text>
-                    })}
-             */}
-            
-            {/* </Paper> */}
+            </Paper>
             <Button variant="contained" className={classes.backButton}
                 onClick={()=> changePage(-1)}>
                     Back To Friend's Contact
