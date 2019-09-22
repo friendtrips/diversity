@@ -1,6 +1,8 @@
 import React from 'react';
 import FlightDetails from './FlightDetails';
-import {Typography, Paper,Table, TableBody, TableCell, TableRow, TableHead, Button} from '@material-ui/core';
+import Header from './Header'
+import {Typography, Paper,Table, TableBody, TableCell, TableRow, TableHead, Button, Grid} from '@material-ui/core';
+
 
 const FlightList = props => {
   const [open, setOpen] = React.useState(false);
@@ -19,8 +21,13 @@ const FlightList = props => {
 
   return (
     <>
-    <Typography>Flight List</Typography>
-    <Paper>
+    <Header />
+  <Grid container direction="column" style={{width: '90%', marginLeft: 40, alignContent: 'flex-start'}}>
+    <Grid item>
+     <Typography variant="h4" style={{paddingBottom: 20}}>Flight List</Typography>
+    </Grid>
+  <Grid item>
+    <Paper >
       <Table>
       <TableHead>
         <TableRow>
@@ -32,21 +39,23 @@ const FlightList = props => {
       </TableHead>
       <TableBody>
         {props.flightData.map((trip, index) => (
-          <TableRow key={trip.destinationLocation}>
-            <TableCell align="center">{trip.destinationLocation}</TableCell>
+          <TableRow key={trip.flights[0].itinerary.departureFlight.arrivingAt}>
+            <TableCell align="center">{trip.flights[0].itinerary.departureFlight.arrivingAt}</TableCell>
             <TableCell align="center">{trip.totalCost}</TableCell>
             <TableCell align="center">{trip.totalCost/props.friends.length}</TableCell>
             <TableCell align="center">
               <Button variant="outlined" color="primary" onClick={(e) => handleClickOpen(e, {index})}>
                 Trip Detail
               </Button>
-              <FlightDetails tripName={props.tripName} flightData={props.flightData} friends={props.friends} selectedValue={selectedValue} open={open} onClose={handleClose} />
+              <FlightDetails changePage={props.changePage} tripName={props.tripName} flightData={props.flightData} friends={props.friends} selectedValue={selectedValue} open={open} onClose={handleClose} />
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
     </Table>
   </Paper>
+  </Grid>
+  </Grid>
   </>
   )
 };

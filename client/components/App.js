@@ -12,7 +12,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 3,
+      pageNum: 2,
       tripName: 'BFF Time in The Sun',
       departureDate: '',
       returnDate: '',
@@ -145,12 +145,13 @@ updateDataWithNames() {
 }
 
   render() {
+   
     if (this.state.pageNum === 0) {
       return <LandingPage changePage={this.changePage} />;
     } if (this.state.pageNum === 1) {
       return <TripPreferences changePage={this.changePage} />;
     } if (this.state.pageNum === 2) {
-      return <FlightList 
+      return <FlightList
         dummyData={this.dummyData}
         changePage={this.changePage}
         flightData={this.state.flightData}
@@ -168,8 +169,8 @@ updateDataWithNames() {
           dummyData={this.dummyData}
         />
       );
-    } else if (this.state.pageNum === 5) {
+    } else if (this.state.pageNum === 5) {    
       return <Confirmation tripName={this.state.tripName} />;
-    }
   }
+}
 }
