@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Grid, TextField, Typography } from '@material-ui/core';
+import { Paper, Grid, TextField, Typography, Button } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
@@ -68,6 +68,7 @@ const TripPreferences = (props) => {
                         variant="outlined"
                     />
                 </form>
+                <Button onClick={props.handleClickOnFindFlights}>Find Flights</Button>
             </Paper>
         </>
     )

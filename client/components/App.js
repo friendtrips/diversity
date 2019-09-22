@@ -1,10 +1,10 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
-
 import LandingPage from './LandingPage';
 import TripPreferences from './TripPreferences';
 import FlightList from './FlightList';
 import BookTrip from './BookTrip';
-import PaymentPage from './PaymentPage'
+import PaymentPage from './PaymentPage';
 import Confirmation from './Confirmation';
 
 import axios from 'axios';
@@ -13,16 +13,17 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 0,
+      pageNum: 1,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
-      friends: [{ name: 'Booke Snelligs', origin: 'AUS' }, { name: 'Harry Potter', origin: 'JFK' }],
+      friends: [{ name: 'Booke Snelligs', origin: 'AUS' }, { name: 'Harry Potter', origin: 'SAT' }],
       airports: ['LGA', 'JFK', 'MDW', 'ORD', 'LAS', 'SEA', 'SFO', 'DCA', 'MSY', 'PSP', 'SAN', 'STL', 'SEZ', 'SDX', 'HNL', 'MIA', 'BBG', 'BKG', 'BOS', 'MCO', 'PDX', 'BNA', 'LAX', 'SAT', 'AUS', 'SAV'],
       flightData: []
     };
     this.dummyData = this.dummyData.bind(this)
     this.changePage = this.changePage.bind(this)
+    this.updateDataWithNames = this.updateDataWithNames.bind(this)
     this.handleUserInput = this.handleUserInput.bind(this)
   }
 
@@ -76,7 +77,7 @@ export default class App extends React.Component {
           totalCost: 500
         },
       ]
-    this.setState({ flightData: hold })
+    this.setState({ flightData: hold });
   }
 
   selectDepartureDate(date) {
@@ -92,20 +93,58 @@ export default class App extends React.Component {
     this.setState(event)
   }
 
+  handleClickOnFindFlights() {
+    this.fetchFlightData();
+  }
+
+  updateDataWithNames() {
+    const findItineraryIndex = (origin, index) => {
+      for (let i = 0; i < this.state.flightData[index].flights.length; i++) {
+        if (origin === this.state.flightData[index].flights[i].itinerary.departureFlight.leavingFrom) {
+          return i;
+        }
+      }
+    }
+
+    const friendsCopy = this.state.friends.slice();
+    const hold = this.state.flightData;
+
+    hold.forEach((trip, index) => {
+      for (let i = 0; i < friendsCopy.length; i++) {
+
+        let itineraryIndex = findItineraryIndex(friendsCopy[i].origin, index);
+        trip.flights[itineraryIndex].traveler = friendsCopy[i].name;
+      }
+    });
+
+    this.setState({ flightData: hold });
+  }
+
   fetchFlightData() {
+    console.log('fetching flight data')
     let departures = this.state.friends.map(friend => {
       return friend.origin
     })
-    axios.post('/endpoint', {
+    axios.post('/flights', {
       airportDepartures: departures,
       airportDestinations: this.state.airports,
       departureDate: this.state.departureDate,
       returnDate: this.state.returnDate
     })
       .then(response => {
-
+        console.log(response.data)
+        this.setState({
+          flightData: response.data
+        })
       })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
+
+  componentWillMount() {
+    this.dummyData();
+  };
 
   render() {
     if (this.state.pageNum === 0) {
@@ -114,28 +153,28 @@ export default class App extends React.Component {
       />)
     } else if (this.state.pageNum === 1) {
       return (<TripPreferences
-        changePage={this.changePage} handleUserInput={this.handleUserInput} tripName={this.state.tripName} returnDate={this.state.returnDate} departureDate={this.state.departureDate} selectDepartureDate={this.selectDepartureDate.bind(this)} selectReturnDate={this.selectReturnDate.bind(this)}
+        changePage={this.changePage} handleUserInput={this.handleUserInput} tripName={this.state.tripName} returnDate={this.state.returnDate} departureDate={this.state.departureDate} selectDepartureDate={this.selectDepartureDate.bind(this)} selectReturnDate={this.selectReturnDate.bind(this)} handleClickOnFindFlights={this.handleClickOnFindFlights.bind(this)}
       />)
     } else if (this.state.pageNum === 2) {
-      return (<FlightList
-        changePage={this.changePage}
-      />)
-    } else if (this.state.pageNum === 3) {
-      return (<BookTrip
-        changePage={this.changePage}
-        friends={this.state.friends}
-      />)
-    } else if (this.state.pageNum === 4) {
-      return (<PaymentPage
-        changePage={this.changePage}
-        friends={this.state.friends}
-        flightData={this.state.flightData}
+      return <FlightList
         dummyData={this.dummyData}
-      />)
+        changePage={this.changePage}
+        flightData={this.state.flightData}
+        friends={this.state.friends}
+      />;
+    } else if (this.state.pageNum === 3) {
+      return <BookTrip changePage={this.changePage} friends={this.state.friends} />;
+    } else if (this.state.pageNum === 4) {
+      return (
+        <PaymentPage
+          changePage={this.changePage}
+          friends={this.state.friends}
+          flightData={this.state.flightData}
+          dummyData={this.dummyData}
+        />
+      );
     } else if (this.state.pageNum === 5) {
-      return (<Confirmation
-        tripName={this.state.tripName}
-      />)
+      return <Confirmation tripName={this.state.tripName} />;
     }
   }
 }
