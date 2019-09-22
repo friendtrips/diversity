@@ -1,0 +1,374 @@
+{
+  "trips": [
+    {
+      "IATAcode": "ORD",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "JAX", "arrivingAt": "ORD" },
+        "returnFlight": { "leavingFrom": "ORD", "arrivingAt": "JAX" }
+      }
+    },
+    {
+      "IATAcode": "ORD",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "AUS", "arrivingAt": "ORD" },
+        "returnFlight": { "leavingFrom": "ORD", "arrivingAt": "AUS" }
+      }
+    },
+    {
+      "IATAcode": "SAN",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "JAX", "arrivingAt": "SAN" },
+        "returnFlight": { "leavingFrom": "SAN", "arrivingAt": "JAX" }
+      }
+    },
+    {
+      "IATAcode": "SAN",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "PDX", "arrivingAt": "SAN" },
+        "returnFlight": { "leavingFrom": "SAN", "arrivingAt": "PDX" }
+      }
+    },
+    {
+      "IATAcode": "MDW",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "LGA", "arrivingAt": "MDW" },
+        "returnFlight": { "leavingFrom": "MDW", "arrivingAt": "LGA" }
+      }
+    },
+    {
+      "IATAcode": "MDW",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "PDX", "arrivingAt": "MDW" },
+        "returnFlight": { "leavingFrom": "MDW", "arrivingAt": "PDX" }
+      }
+    },
+    {
+      "IATAcode": "SAN",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "BOS",
+          "arrivingAt": "SAN",
+          "departureTime": "2019-10-15T12:59:00",
+          "arriveTime": "2019-10-15T20:44:00",
+          "flightNumber": "1239",
+          "airline": "Frontier Airlines"
+        },
+        "returnFlight": {
+          "leavingFrom": "SAN",
+          "arrivingAt": "BOS",
+          "departureTime": "2019-10-31T21:48:00",
+          "arriveTime": "2019-11-01T12:05:00",
+          "flightNumber": "1194",
+          "airline": "Frontier Airlines"
+        },
+        "price": 250.8
+      }
+    },
+    {
+      "IATAcode": "SAN",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "AUS", "arrivingAt": "SAN" },
+        "returnFlight": { "leavingFrom": "SAN", "arrivingAt": "AUS" }
+      }
+    },
+    {
+      "IATAcode": "LAS",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "PDX",
+          "arrivingAt": "LAS",
+          "departureTime": "2019-10-15T13:46:00",
+          "arriveTime": "2019-10-15T15:54:00",
+          "flightNumber": "692",
+          "airline": "Spirit Airlines"
+        },
+        "returnFlight": {
+          "leavingFrom": "LAS",
+          "arrivingAt": "PDX",
+          "departureTime": "2019-10-31T21:59:00",
+          "arriveTime": "2019-11-01T00:18:00",
+          "flightNumber": "546",
+          "airline": "Spirit Airlines"
+        },
+        "price": 180.58
+      }
+    },
+    {
+      "IATAcode": "ORD",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "LGA", "arrivingAt": "ORD" },
+        "returnFlight": { "leavingFrom": "ORD", "arrivingAt": "LGA" }
+      }
+    },
+    {
+      "IATAcode": "ORD",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "BOS",
+          "arrivingAt": "ORD",
+          "departureTime": "2019-10-15T10:00:00",
+          "arriveTime": "2019-10-15T18:49:00",
+          "flightNumber": "4927",
+          "airline": "Linear Air"
+        },
+        "returnFlight": {
+          "leavingFrom": "ORD",
+          "arrivingAt": "BOS",
+          "departureTime": "2019-10-31T07:10:00",
+          "arriveTime": "2019-10-31T18:00:00",
+          "flightNumber": "3784",
+          "airline": "Linear Air"
+        },
+        "price": 22852.03
+      }
+    },
+    {
+      "IATAcode": "MDW",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "JAX", "arrivingAt": "MDW" },
+        "returnFlight": { "leavingFrom": "MDW", "arrivingAt": "JAX" }
+      }
+    },
+    {
+      "IATAcode": "SFO",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "BOS",
+          "arrivingAt": "SFO",
+          "departureTime": "2019-10-15T18:05:00",
+          "arriveTime": "2019-10-15T21:51:00",
+          "flightNumber": "2400",
+          "airline": "United"
+        },
+        "returnFlight": {
+          "leavingFrom": "SFO",
+          "arrivingAt": "BOS",
+          "departureTime": "2019-10-31T16:00:00",
+          "arriveTime": "2019-11-01T00:31:00",
+          "flightNumber": "444",
+          "airline": "United"
+        },
+        "price": 335.6
+      }
+    },
+    {
+      "IATAcode": "SFO",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "PDX", "arrivingAt": "SFO" },
+        "returnFlight": { "leavingFrom": "SFO", "arrivingAt": "PDX" }
+      }
+    },
+    {
+      "IATAcode": "MDW",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "BOS",
+          "arrivingAt": "MDW",
+          "departureTime": "2019-10-15T10:00:00",
+          "arriveTime": "2019-10-15T18:47:00",
+          "flightNumber": "4927",
+          "airline": "Linear Air"
+        },
+        "returnFlight": {
+          "leavingFrom": "MDW",
+          "arrivingAt": "BOS",
+          "departureTime": "2019-10-31T07:12:00",
+          "arriveTime": "2019-10-31T18:00:00",
+          "flightNumber": "3777",
+          "airline": "Linear Air"
+        },
+        "price": 21598.62
+      }
+    },
+    {
+      "IATAcode": "LAS",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "LGA",
+          "arrivingAt": "LAS",
+          "departureTime": "2019-10-15T18:29:00",
+          "arriveTime": "2019-10-15T23:28:00",
+          "flightNumber": "2416",
+          "airline": "United"
+        },
+        "returnFlight": {
+          "leavingFrom": "LAS",
+          "arrivingAt": "LGA",
+          "departureTime": "2019-10-31T01:00:00",
+          "arriveTime": "2019-10-31T12:31:00",
+          "flightNumber": "634",
+          "airline": "United"
+        },
+        "price": 234
+      }
+    },
+    {
+      "IATAcode": "MDW",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "AUS", "arrivingAt": "MDW" },
+        "returnFlight": { "leavingFrom": "MDW", "arrivingAt": "AUS" }
+      }
+    },
+    {
+      "IATAcode": "ORD",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "PDX",
+          "arrivingAt": "ORD",
+          "departureTime": "2019-10-15T13:46:00",
+          "arriveTime": "2019-10-16T05:37:00",
+          "flightNumber": "692",
+          "airline": "Spirit Airlines"
+        },
+        "returnFlight": {
+          "leavingFrom": "ORD",
+          "arrivingAt": "PDX",
+          "departureTime": "2019-10-31T12:51:00",
+          "arriveTime": "2019-11-01T00:18:00",
+          "flightNumber": "847",
+          "airline": "Spirit Airlines"
+        },
+        "price": 399.43
+      }
+    },
+    {
+      "IATAcode": "SAN",
+      "flightInfo": {
+        "departureFlight": { "leavingFrom": "LGA", "arrivingAt": "SAN" },
+        "returnFlight": { "leavingFrom": "SAN", "arrivingAt": "LGA" }
+      }
+    },
+    {
+      "IATAcode": "LAS",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "BOS",
+          "arrivingAt": "LAS",
+          "departureTime": "2019-10-15T20:27:00",
+          "arriveTime": "2019-10-15T23:27:00",
+          "flightNumber": "641",
+          "airline": "Spirit Airlines"
+        },
+        "returnFlight": {
+          "leavingFrom": "LAS",
+          "arrivingAt": "BOS",
+          "departureTime": "2019-10-31T22:05:00",
+          "arriveTime": "2019-11-01T06:02:00",
+          "flightNumber": "640",
+          "airline": "Spirit Airlines"
+        },
+        "price": 222.82
+      }
+    },
+    {
+      "IATAcode": "LAS",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "AUS",
+          "arrivingAt": "LAS",
+          "departureTime": "2019-10-15T21:00:00",
+          "arriveTime": "2019-10-15T22:03:00",
+          "flightNumber": "505",
+          "airline": "Spirit Airlines"
+        },
+        "returnFlight": {
+          "leavingFrom": "LAS",
+          "arrivingAt": "AUS",
+          "departureTime": "2019-10-31T00:27:00",
+          "arriveTime": "2019-10-31T05:05:00",
+          "flightNumber": "540",
+          "airline": "Spirit Airlines"
+        },
+        "price": 74.58
+      }
+    },
+    {
+      "IATAcode": "SFO",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "LGA",
+          "arrivingAt": "SFO",
+          "departureTime": "2019-10-15T16:00:00",
+          "arriveTime": "2019-10-15T23:55:00",
+          "flightNumber": "741",
+          "airline": "United"
+        },
+        "returnFlight": {
+          "leavingFrom": "SFO",
+          "arrivingAt": "LGA",
+          "departureTime": "2019-10-31T13:10:00",
+          "arriveTime": "2019-10-31T23:27:00",
+          "flightNumber": "727",
+          "airline": "United"
+        },
+        "price": 209.5
+      }
+    },
+    {
+      "IATAcode": "SFO",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "AUS",
+          "arrivingAt": "SFO",
+          "departureTime": "2019-10-15T07:00:00",
+          "arriveTime": "2019-10-15T08:45:00",
+          "flightNumber": "1219",
+          "airline": "Alaska Airlines"
+        },
+        "returnFlight": {
+          "leavingFrom": "SFO",
+          "arrivingAt": "AUS",
+          "departureTime": "2019-10-31T00:59:00",
+          "arriveTime": "2019-10-31T12:06:00",
+          "flightNumber": "662",
+          "airline": "Frontier Airlines"
+        },
+        "price": 299
+      }
+    },
+    {
+      "IATAcode": "LAS",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "JAX",
+          "arrivingAt": "LAS",
+          "departureTime": "2019-10-15T06:00:00",
+          "arriveTime": "2019-10-15T12:09:00",
+          "flightNumber": "1123",
+          "airline": "Spirit Airlines"
+        },
+        "returnFlight": {
+          "leavingFrom": "LAS",
+          "arrivingAt": "JAX",
+          "departureTime": "2019-10-31T13:09:00",
+          "arriveTime": "2019-11-01T00:35:00",
+          "flightNumber": "470",
+          "airline": "Spirit Airlines"
+        },
+        "price": 160.38
+      }
+    },
+    {
+      "IATAcode": "SFO",
+      "flightInfo": {
+        "departureFlight": {
+          "leavingFrom": "JAX",
+          "arrivingAt": "SFO",
+          "departureTime": "2019-10-15T14:37:00",
+          "arriveTime": "2019-10-15T23:54:00",
+          "flightNumber": "413",
+          "airline": "Frontier Airlines"
+        },
+        "returnFlight": {
+          "leavingFrom": "SFO",
+          "arrivingAt": "JAX",
+          "departureTime": "2019-10-31T00:59:00",
+          "arriveTime": "2019-10-31T11:03:00",
+          "flightNumber": "662",
+          "airline": "Frontier Airlines"
+        },
+        "price": 286.2
+      }
+    }
+  ]
+}

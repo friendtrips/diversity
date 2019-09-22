@@ -4,6 +4,7 @@
   "description": "A React/Babel/Webpack/Express template for personal projects",
   "main": "index.js",
   "scripts": {
+    "start": "node server/index.js",
     "test": "jest",
     "server-dev": "nodemon server",
     "webpack-dev": "webpack --mode=development --watch",
@@ -12,9 +13,14 @@
   "author": "Brooke Snellings",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
