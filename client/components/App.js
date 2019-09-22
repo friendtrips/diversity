@@ -168,8 +168,8 @@ export default class App extends React.Component {
       .then(response => {
         console.log(response.data)
         this.setState({
-          flightData: response.data
-        })
+          flightData: response.date
+        }, () => this.updateDataWithNames());
       })
       .catch(function (error) {
         console.log('error fetching flight data:', error);
