@@ -17,7 +17,23 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif|mp4)$/,
+        use: [
+          'file-loader'
+        ]
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   }
 };
