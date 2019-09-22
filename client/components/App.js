@@ -13,7 +13,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 4,
+      pageNum: 3,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
@@ -81,6 +81,7 @@ export default class App extends React.Component {
                 flightNumber: 'HE9865',
               }
             },
+    
           },
         ],
       }
