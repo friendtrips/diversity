@@ -6,9 +6,10 @@ const FlightList = props => {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState();
 
-  function handleClickOpen(value) {
+  function handleClickOpen(e, value) {
+    e.preventDefault()
     setOpen(true);
-    setSelectedValue(value);
+    setSelectedValue(value.index);
   }
 
   const handleClose = () => {
@@ -36,10 +37,10 @@ const FlightList = props => {
             <TableCell align="center">{trip.totalCost}</TableCell>
             <TableCell align="center">{trip.totalCost/props.friends.length}</TableCell>
             <TableCell align="center">
-              <Button variant="outlined" color="primary" onClick={() => handleClickOpen(index)}>
-                Trip Detail hooray
+              <Button variant="outlined" color="primary" onClick={(e) => handleClickOpen(e, {index})}>
+                Trip Detail
               </Button>
-              <FlightDetails flightData={props.flightData} friends={props.friends} selectedValue={selectedValue} open={open} onClose={handleClose} />
+              <FlightDetails tripName={props.tripName} flightData={props.flightData} friends={props.friends} selectedValue={selectedValue} open={open} onClose={handleClose} />
             </TableCell>
           </TableRow>
         ))}
