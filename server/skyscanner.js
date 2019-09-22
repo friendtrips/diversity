@@ -2,153 +2,67 @@
 /* eslint-disable no-restricted-syntax */
 const request = require('request');
 const fs = require('fs');
-
+require('dotenv').config();
 
 let backupData;
 fs.readFile('trip-data-copy.json', 'utf-8', (err, data) => {
   if (err) {
-    console.log(err)
+    console.log(err);
   } else {
     backupData = JSON.parse(data);
   }
 });
-
-require('dotenv').config();
 
 let tripData = {
   trips: []
 };
 
 const findCheapestDestinations = (res, flightsPerDestination) => {
-  console.log('FIRED')
-  // fs.readFile('trip-data.json', 'utf-8', (err, data) => {
-  //   if (err) {
-  //     console.log('error', err);
-  //   } else {
-  //     const { trips } = JSON.parse(data);
-  //     const totals = {};
-  //     trips.forEach(trip => {
-  //       if (totals[trip.IATAcode]) {
-  //         totals[trip.IATAcode] += trip.flightInfo.price;
-  //       } else {
-  //         totals[trip.IATAcode] = trip.flightInfo.price;
-  //       }
-  //     });
-
-  //     const temp = [];
-  //     for (const code in totals) {
-  //       temp.push([code, totals[code]]);
-  //     };
-  //     console.log('temp', temp)
-  //     const sorted = temp.sort((a, b) => {
-  //       return a[1] - b[1];
-  //     });
-  //     console.log('sorted', sorted)
-  //     const response = [];
-  //     for (const destination of sorted) {
-  //       const flights = [];
-  //       trips.forEach(trip => {
-  //         if (trip.IATAcode === destination[0]) {
-  //           const itinerary = {
-  //             itinerary: {
-  //               departureFlight: trip.flightInfo.departureFlight,
-  //               returnFlight: trip.flightInfo.returnFlight
-  //             }
-  //           };
-  //           flights.push(itinerary);
-  //         }
-  //       });
-  //       console.log('flights', flights)
-  //         const info = {
-  //           destinationLocation: destination[0],
-  //           flights,
-  //           totalCost: destination[1]
-  //         };
-  //         response.push(info);
-  //     }
-  //     res.send(response);
-  //   }
-  // });
-
   const { trips } = tripData;
 
-  console.log('TRIPSSSS', trips)
-
   const totals = {};
-      trips.forEach(trip => {
-        if (totals[trip.IATAcode]) {
-          totals[trip.IATAcode] += trip.flightInfo.price;
-        } else {
-          totals[trip.IATAcode] = trip.flightInfo.price;
-        }
-      });
+  trips.forEach(trip => {
+    if (totals[trip.IATAcode]) {
+      totals[trip.IATAcode] += trip.flightInfo.price;
+    } else {
+      totals[trip.IATAcode] = trip.flightInfo.price;
+    }
+  });
 
-      const temp = [];
-      for (const code in totals) {
-        temp.push([code, totals[code]]);
-      };
-      console.log('temp', temp)
-      const sorted = temp.sort((a, b) => {
-        return a[1] - b[1];
-      });
-      console.log('sorted', sorted)
-      const response = [];
-      for (const destination of sorted) {
-        const flights = [];
-        trips.forEach(trip => {
-          if (trip.IATAcode === destination[0]) {
-            const itinerary = {
-              itinerary: {
-                departureFlight: trip.flightInfo.departureFlight,
-                returnFlight: trip.flightInfo.returnFlight
-              }
-            };
-            flights.push(itinerary);
+  const temp = [];
+  for (const code in totals) {
+    temp.push([code, totals[code]]);
+  }
+  const sorted = temp.sort((a, b) => {
+    return a[1] - b[1];
+  });
+  const response = [];
+  for (const destination of sorted) {
+    const flights = [];
+    trips.forEach(trip => {
+      if (trip.IATAcode === destination[0]) {
+        const itinerary = {
+          itinerary: {
+            departureFlight: trip.flightInfo.departureFlight,
+            returnFlight: trip.flightInfo.returnFlight
           }
-        });
-        console.log('flights', flights)
-          const info = {
-            destinationLocation: destination[0],
-            flights,
-            totalCost: destination[1]
-          };
-          response.push(info);
+        };
+        flights.push(itinerary);
       }
-      res.send(response);
-
+    });
+    const info = {
+      destinationLocation: destination[0],
+      flights,
+      totalCost: destination[1]
+    };
+    response.push(info);
+  }
+  res.send(response);
 };
 
 const saveTripData = (trip, res, resolve) => {
-  // fs.readFile('trip-data.json', 'utf-8', (err, data) => {
-  //   if (err && err.code.toUpperCase() === 'ENOENT') {
-  //     console.log('this is what the error message looks like', err.code);
-  //     const trips = JSON.stringify({ trips: [trip] });
-  //     fs.writeFile('trip-data.json', trips, err => {
-  //       if (err) {
-  //         console.log('error', err);
-  //       } else {
-  //         resolve();
-  //       }
-  //     });
-  //   } else if (err && err.code.toUpperCase() !== 'ENOENT') {
-  //     console.log('error', err);
-  //   } else {
-  //     const parsedData = JSON.parse(data);
-  //     console.log('parsed', parsedData);
-  //     parsedData.trips.push(trip);
-  //     fs.writeFile('trip-data.json', JSON.stringify(parsedData), 'utf-8', error => {
-  //       if (error) {
-  //         console.log('ERROR DAMNIT', error);
-  //       } else {
-  //         resolve();
-  //       }
-  //     });
-  //   }
-  // });
-
-  
-    tripData.trips.push(trip);
-    resolve();
+  tripData.trips.push(trip);
+  resolve();
 };
 
 const findCarrier = (res, carrierId) => {
@@ -182,31 +96,40 @@ const filterAndSortResponseData = (response, airportDeparture, airportDestinatio
     const flight = legs[i];
 
     if (flight.Id === outboundLegId) {
-      outboundFlight.departureTime = flight.Departure.length ? flight.Departure : '2019-10-31T00:50:00';
+      outboundFlight.departureTime = flight.Departure.length
+        ? flight.Departure
+        : '2019-10-31T00:50:00';
       outboundFlight.arriveTime = flight.Arrival.length ? flight.Arrival : '2019-10-31T06:42:00';
-      outboundFlight.flightNumber = flight.FlightNumbers[0].FlightNumber.length ? flight.FlightNumbers[0].FlightNumber : '1234';
+      outboundFlight.flightNumber = flight.FlightNumbers[0].FlightNumber.length
+        ? flight.FlightNumbers[0].FlightNumber
+        : '1234';
       const carrierId = flight.FlightNumbers[0].CarrierId;
       const carrier = findCarrier(res, carrierId);
       outboundFlight.airline = carrier.length ? carrier : 'United';
     }
     if (flight.Id === inboundLegId) {
-      returningFlight.departureTime = flight.Departure.length ? flight.Departure : '2019-10-31T00:50:00';
+      returningFlight.departureTime = flight.Departure.length
+        ? flight.Departure
+        : '2019-10-31T00:50:00';
       returningFlight.arriveTime = flight.Arrival.length ? flight.Arrival : '2019-10-31T06:42:00';
-      returningFlight.flightNumber = flight.FlightNumbers[0].FlightNumber.length ? flight.FlightNumbers[0].FlightNumber : '1234';
+      returningFlight.flightNumber = flight.FlightNumbers[0].FlightNumber.length
+        ? flight.FlightNumbers[0].FlightNumber
+        : '1234';
       const carrierId = flight.FlightNumbers[0].CarrierId;
       const carrier = findCarrier(res, carrierId);
       returningFlight.airline = carrier.length ? carrier : 'United';
-    } 
+    }
   }
 
   const failSafe = [
     ['departureTime', '2019-10-15T00:50:00'],
     ['arriveTime', '2019-10-31T00:50:00'],
     ['flightNumber', '1234'],
-    ['airline', 'United']];
+    ['airline', 'United']
+  ];
   failSafe.forEach(el => {
     const property = el[0];
-    const value = el[1]
+    const value = el[1];
     if (outboundFlight[property] === undefined) {
       outboundFlight[property] = value;
     }
@@ -246,17 +169,23 @@ const skyScannerGet = (res, resolve, sessionKey, airportDeparture, airportDestin
       }
     } else {
       resolve();
-      console.log('ERROR in your Sky Scanner GET request', error);
     }
   };
 
   request(options, cb);
 };
 
-const skyScannerPost = (res, resolve, airportDeparture, airportDestination, departureDate, returnDate, counter) => {
+const skyScannerPost = (
+  res,
+  resolve,
+  airportDeparture,
+  airportDestination,
+  departureDate,
+  returnDate,
+  counter
+) => {
   let count = counter || 0;
-  console.log('count', count)
-  
+
   const options = {
     method: 'POST',
     url: 'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0',
@@ -292,7 +221,15 @@ const skyScannerPost = (res, resolve, airportDeparture, airportDestination, depa
         resolve();
       } else {
         count++;
-        skyScannerPost(res, resolve, airportDeparture, airportDestination, departureDate, returnDate, count);
+        skyScannerPost(
+          res,
+          resolve,
+          airportDeparture,
+          airportDestination,
+          departureDate,
+          returnDate,
+          count
+        );
       }
       console.log('ERROR in your Sky Scanner POST request', error);
     }
@@ -306,7 +243,14 @@ const getFlights = (res, { airportDepartures, airportDestinations, departureDate
   airportDepartures.forEach(departingAirportCode => {
     airportDestinations.forEach(destinationAirportCode => {
       const newPromise = new Promise((resolve, reject) => {
-        skyScannerPost(res, resolve, departingAirportCode, destinationAirportCode, departureDate, returnDate);
+        skyScannerPost(
+          res,
+          resolve,
+          departingAirportCode,
+          destinationAirportCode,
+          departureDate,
+          returnDate
+        );
       });
       promises.push(newPromise);
     });
@@ -316,20 +260,16 @@ const getFlights = (res, { airportDepartures, airportDestinations, departureDate
   Promise.all(promises)
     .then(() => findCheapestDestinations(res, flightsPerDestination))
     .then(() => {
-      // fs.unlinkSync('trip-data.json');
       tripData = {
         trips: []
       };
-      console.log('end', tripData)
     })
     .catch(err => {
-      // fs.unlinkSync('trip-data.json');
       tripData = {
         trips: []
       };
       console.log('oops', err);
-      console.log('error end', tripData)
-      res.send(backupData)
+      res.send(backupData);
     });
 };
 

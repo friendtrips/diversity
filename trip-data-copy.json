@@ -1,48 +1,6 @@
 {
   "trips": [
     {
-      "IATAcode": "ORD",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "JAX", "arrivingAt": "ORD" },
-        "returnFlight": { "leavingFrom": "ORD", "arrivingAt": "JAX" }
-      }
-    },
-    {
-      "IATAcode": "ORD",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "AUS", "arrivingAt": "ORD" },
-        "returnFlight": { "leavingFrom": "ORD", "arrivingAt": "AUS" }
-      }
-    },
-    {
-      "IATAcode": "SAN",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "JAX", "arrivingAt": "SAN" },
-        "returnFlight": { "leavingFrom": "SAN", "arrivingAt": "JAX" }
-      }
-    },
-    {
-      "IATAcode": "SAN",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "PDX", "arrivingAt": "SAN" },
-        "returnFlight": { "leavingFrom": "SAN", "arrivingAt": "PDX" }
-      }
-    },
-    {
-      "IATAcode": "MDW",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "LGA", "arrivingAt": "MDW" },
-        "returnFlight": { "leavingFrom": "MDW", "arrivingAt": "LGA" }
-      }
-    },
-    {
-      "IATAcode": "MDW",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "PDX", "arrivingAt": "MDW" },
-        "returnFlight": { "leavingFrom": "MDW", "arrivingAt": "PDX" }
-      }
-    },
-    {
       "IATAcode": "SAN",
       "flightInfo": {
         "departureFlight": {
@@ -62,13 +20,6 @@
           "airline": "Frontier Airlines"
         },
         "price": 250.8
-      }
-    },
-    {
-      "IATAcode": "SAN",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "AUS", "arrivingAt": "SAN" },
-        "returnFlight": { "leavingFrom": "SAN", "arrivingAt": "AUS" }
       }
     },
     {
@@ -96,13 +47,6 @@
     {
       "IATAcode": "ORD",
       "flightInfo": {
-        "departureFlight": { "leavingFrom": "LGA", "arrivingAt": "ORD" },
-        "returnFlight": { "leavingFrom": "ORD", "arrivingAt": "LGA" }
-      }
-    },
-    {
-      "IATAcode": "ORD",
-      "flightInfo": {
         "departureFlight": {
           "leavingFrom": "BOS",
           "arrivingAt": "ORD",
@@ -120,13 +64,6 @@
           "airline": "Linear Air"
         },
         "price": 22852.03
-      }
-    },
-    {
-      "IATAcode": "MDW",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "JAX", "arrivingAt": "MDW" },
-        "returnFlight": { "leavingFrom": "MDW", "arrivingAt": "JAX" }
       }
     },
     {
@@ -149,13 +86,6 @@
           "airline": "United"
         },
         "price": 335.6
-      }
-    },
-    {
-      "IATAcode": "SFO",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "PDX", "arrivingAt": "SFO" },
-        "returnFlight": { "leavingFrom": "SFO", "arrivingAt": "PDX" }
       }
     },
     {
@@ -203,13 +133,6 @@
       }
     },
     {
-      "IATAcode": "MDW",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "AUS", "arrivingAt": "MDW" },
-        "returnFlight": { "leavingFrom": "MDW", "arrivingAt": "AUS" }
-      }
-    },
-    {
       "IATAcode": "ORD",
       "flightInfo": {
         "departureFlight": {
@@ -229,13 +152,6 @@
           "airline": "Spirit Airlines"
         },
         "price": 399.43
-      }
-    },
-    {
-      "IATAcode": "SAN",
-      "flightInfo": {
-        "departureFlight": { "leavingFrom": "LGA", "arrivingAt": "SAN" },
-        "returnFlight": { "leavingFrom": "SAN", "arrivingAt": "LGA" }
       }
     },
     {
