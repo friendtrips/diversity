@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 // import Button from '@material-ui/core/Button';
 // import { Grid } from '@material-ui/core';
+import Header from './Header';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -40,10 +41,7 @@ const PaymentPage = ({changePage, flightData}) => {
     const classes = useStyles();
     return (
         <>
-            <div>
-                <h2>Logo</h2>
-                <hr></hr>
-            </div>
+          <Header />
             {/* {console.log(flightData[0].flights[0].name)}
             <Paper className={classes.root}>
                 <Grid container spacing={3}>
@@ -60,4 +58,5 @@ const PaymentPage = ({changePage, flightData}) => {
     )
 }
 
-export default PaymentPage
+export default PaymentPage;
+

@@ -22,39 +22,39 @@ const FlightList = props => {
   return (
     <>
     <Header />
-  <Grid container direction="column" style={{width: '90%', marginLeft: 40, alignContent: 'flex-start'}}>
-    <Grid item>
-     <Typography variant="h4" style={{paddingBottom: 20}}>Flight List</Typography>
+    <Grid container direction="column" style={{width: '90%', marginLeft: 40, alignContent: 'flex-start'}}>
+      <Grid item>
+      <Typography variant="h4" style={{paddingBottom: 20}}>Flight List</Typography>
+      </Grid>
+      <Grid item>
+        <Paper >
+          <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">Destination</TableCell>
+              <TableCell align="center">Total Cost</TableCell>
+              <TableCell align="center">Cost per Person</TableCell>
+              <TableCell></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {props.flightData.map((trip, index) => (
+              <TableRow key={trip.flights[0].itinerary.departureFlight.arrivingAt}>
+                <TableCell align="center">{trip.flights[0].itinerary.departureFlight.arrivingAt}</TableCell>
+                <TableCell align="center">{trip.totalCost}</TableCell>
+                <TableCell align="center">{trip.totalCost/props.friends.length}</TableCell>
+                <TableCell align="center">
+                  <Button variant="outlined" color="primary" onClick={(e) => handleClickOpen(e, {index})}>
+                    Trip Detail
+                  </Button>
+                  <FlightDetails changePage={props.changePage} tripName={props.tripName} flightData={props.flightData} friends={props.friends} selectedValue={selectedValue} open={open} onClose={handleClose} />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
     </Grid>
-  <Grid item>
-    <Paper >
-      <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell align="center">Destination</TableCell>
-          <TableCell align="center">Total Cost</TableCell>
-          <TableCell align="center">Cost per Person</TableCell>
-          <TableCell></TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {props.flightData.map((trip, index) => (
-          <TableRow key={trip.flights[0].itinerary.departureFlight.arrivingAt}>
-            <TableCell align="center">{trip.flights[0].itinerary.departureFlight.arrivingAt}</TableCell>
-            <TableCell align="center">{trip.totalCost}</TableCell>
-            <TableCell align="center">{trip.totalCost/props.friends.length}</TableCell>
-            <TableCell align="center">
-              <Button variant="outlined" color="primary" onClick={(e) => handleClickOpen(e, {index})}>
-                Trip Detail
-              </Button>
-              <FlightDetails changePage={props.changePage} tripName={props.tripName} flightData={props.flightData} friends={props.friends} selectedValue={selectedValue} open={open} onClose={handleClose} />
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </Paper>
-  </Grid>
   </Grid>
   </>
   )
