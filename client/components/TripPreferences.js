@@ -87,7 +87,10 @@ const TripPreferences = (props) => {
 
                     </Grid>
                 </form>
-                <Grid><Button variant="contained" style={{ width: '100%', marginTop: '10px' }} onClick={props.handleClickOnFindFlights}>Find Flights</Button></Grid>
+                <Grid><Button variant="contained" style={{ width: '100%', marginTop: '10px' }} onClick={() => {
+                    props.handleClickOnFindFlights();
+                    props.changePage(1)
+                }}>Find Flights</Button></Grid>
             </Paper>
         </div >
     )
