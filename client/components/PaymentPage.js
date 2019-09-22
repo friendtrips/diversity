@@ -15,16 +15,14 @@ import { Grid } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { green } from '@material-ui/core/colors';
-import { fontWeight } from '@material-ui/system';
 
 
 const useStyles = makeStyles(theme => ({
     root: {
-    //   marginTop: theme.spacing(3),
-    //   overflowX: 'auto',
-    //   marginLeft: '20%',
-    //   marginRight: '20%'
-    flexGrow: 1
+
+      marginLeft: '20%',
+      marginRight: '20%',
+      flexGrow: 1
     },
     table: {
       minWidth: 650,
@@ -64,15 +62,13 @@ const useStyles = makeStyles(theme => ({
   })(props => <Checkbox color="default" {...props} />);
 
 
-const PaymentPage = ({changePage, flightData}) => {
+const PaymentPage = ({changePage, flightData, handlePay}) => {
     const classes = useStyles();
     return (
 
         
         <>
           <Header />
-            
-         
             <h2>Payment Page</h2>
             <Paper>
                 <Grid >
@@ -97,7 +93,7 @@ const PaymentPage = ({changePage, flightData}) => {
                                 control={
                                 <GreenCheckbox
                                     checked={flight.paid}
-                                    // onChange={handleChange('checkedG')}
+                                    onChange={()=> handlePay(flight.traveler) }
                                     value="checkedG"
                                 />
                                 }
