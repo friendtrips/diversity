@@ -6,33 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Project Template</title>
+    <style>
+      #world {
+        position: relative;
+      }
+      #plane {
+        /* position: absolute;
+        float: left;
+        width: 145px;
+        top: 250px;
+        transform-origin: right;
+        transform: rotate(360deg) */
+
+        position: absolute;
+
+    width: 145px;
+    top: 110px;
+    transform-origin: 206px 90px;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <script src="bundle.js"></script>
+    <div id="world">
+      <img src="./plane.svg" id="plane">
+      <img src="./LogoMakr_4eqhaq.png"  >
+      <!-- <img src="./plane.png" id="plane" > -->
 
-    <div style="height:500px;width: 500px;">
-      <div id="kayakSearchWidgetContainer"></div>
-      </div>
-      <script type="text/javaScript" src="https://www.kayak.com/affiliate/widget-v2.js"></script>
-      <script type="text/javaScript">
-      KAYAK.embed({
-      container: document.getElementById("kayakSearchWidgetContainer"),
-      hostname: "www.kayak.com",
-      autoPosition: true,
-      defaultProduct: "flights",
-      enabledProducts: ["hotels", "flights"],
-      startDate: "2018-10-02",
-      endDate: "2018-10-28",
-      origin: "New York, NY",
-      destination: "Boston, MA",
-      ssl: true,
-      affiliateId: "acme_corp",
-      isInternalLoad: false,
-      lc: "en",
-      cc: "us",
-      mc: "EUR"
-      });
+    </div>
+
+    <script>
+        const plane = document.getElementById('plane');
+
+  
+        setInterval( () => {
+                let seconds = new Date().getMilliseconds();
+                plane.style.transform = `rotate(${seconds / 2.7}deg)`
+
+        }, 10);
+  
       </script>
 
   </body>
