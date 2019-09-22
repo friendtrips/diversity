@@ -6,6 +6,9 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Header from './Header';
 import { Grid } from '@material-ui/core';
+import backgroundImage from '../../dist/beach.jpg';
+
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -47,8 +50,13 @@ const useStyles = makeStyles(theme => ({
 const Confirmation = ({tripName,changePage}) => {
   const classes = useStyles();
   return (
-    <>
-        <Header />
+    <div style={{
+        backgroundImage: `url(${backgroundImage})`,
+        height: '100vh', 
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'}}>
+      <Header />
         <Paper className={classes.root}>
         <Grid className={classes.parentGrid}>
             <Grid item xs={12} className={classes.nameField}>
@@ -63,9 +71,10 @@ const Confirmation = ({tripName,changePage}) => {
             onClick={()=> changePage(-5)}>
                 Go Home
         </Button>    
-    </>
+    </div>
     )
 }
+
 
 
 export default Confirmation

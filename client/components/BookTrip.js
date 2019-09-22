@@ -12,6 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Header from './Header';
+import backgroundImage from '../../dist/beach.jpg';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -49,7 +50,13 @@ const BookTrip = ({changePage, friends}) => {
    
     return (
 
-        <>
+        <div style={  {backgroundImage: `url(${backgroundImage})`,
+        height: '100vh', 
+      
+        /* Center and scale the image nicely */
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'}}>
         <Header />
           
         <Paper className={classes.root}>
@@ -89,7 +96,7 @@ const BookTrip = ({changePage, friends}) => {
             onClick={()=> changePage(1)}>
                 Send Itenaries
         </Button>    
-    </>
+    </div>
     )
 }
 

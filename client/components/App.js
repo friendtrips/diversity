@@ -14,7 +14,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 5,
+      pageNum: 0,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
@@ -99,7 +99,6 @@ export default class App extends React.Component {
   }
 
   selectDepartureDate(date) {
-    console.log(date)
     this.setState({ departureDate: date })
   }
 
