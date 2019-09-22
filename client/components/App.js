@@ -14,7 +14,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 0,
+      pageNum: 1,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
