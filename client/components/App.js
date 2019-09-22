@@ -25,6 +25,7 @@ export default class App extends React.Component {
     this.changePage = this.changePage.bind(this)
     this.updateDataWithNames = this.updateDataWithNames.bind(this)
     this.handleUserInput = this.handleUserInput.bind(this)
+    this.handlePay = this.handlePay.bind(this)
   }
 
   //change page, associate this to a button to get to the next page
@@ -175,6 +176,29 @@ export default class App extends React.Component {
       });
   }
 
+  handlePay(person) {
+    let hold = this.state.flightData
+    hold[0].flights.forEach(flight => {
+      if (person === flight.traveler) {
+        flight.paid = true
+      } 
+    })
+    this.setState({flightData: hold })
+    setTimeout(() => {
+      let count = this.state.flightData[0].flights.length
+      this.state.flightData[0].flights.forEach(flight => {
+        if (flight.paid === true) {
+          count--
+        }
+      })
+      console.log(count)
+      if (count === 0 ) {
+        this.changePage(1)
+        console.log(count)
+      }
+    },10)
+  }
+
   componentWillMount() {
     this.dummyData();
   };
@@ -215,6 +239,7 @@ export default class App extends React.Component {
           changePage={this.changePage}
           friends={this.state.friends}
           flightData={this.state.flightData}
+          handlePay={this.handlePay}
           dummyData={this.dummyData}
         />
       );
