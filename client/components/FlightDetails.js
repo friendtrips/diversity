@@ -14,7 +14,7 @@ const FlightDetails = props => {
 
 
   if (open){
-    console.log(flightData[selectedValue].flights[0])
+    
     return (
       <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
         <DialogTitle id="simple-dialog-title">{tripName}</DialogTitle>

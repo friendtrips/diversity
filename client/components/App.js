@@ -191,10 +191,8 @@ export default class App extends React.Component {
           count--
         }
       })
-      console.log(count)
       if (count === 0) {
         this.changePage(1)
-        console.log(count)
       }
     }, 10)
   }

@@ -15,39 +15,48 @@ import { Grid } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { green } from '@material-ui/core/colors';
+import backgroundImage from '../../dist/beach.jpg';
 
 
 const useStyles = makeStyles(theme => ({
     root: {
-
-      marginLeft: '20%',
-      marginRight: '20%',
+      marginLeft: '15%',
+      marginRight: '15%',
       flexGrow: 1
     },
+    parentGrid: {
+        marginLeft: '2%',
+        marginRight: '2%',
+        paddingTop: '2%',
+        paddingBottom: '2%',
+        // flexGrow: 1
+      },
     table: {
       minWidth: 650,
     },
     amtField: {
-        fontStyle: "Roboto",
+        fontFamily: "Roboto",
         fontSize: 20
       },
     nameField: {
         paddingTop:'15px',
-        fontStyle: "Roboto",
+        fontFamily: "Roboto",
         fontSize: 22,
       },
     titleField: {
-        fontSize: 18   
+        fontSize: 18,
+        fontFamily: "Roboto",
       },
     flightField: {
-        fontSize: 16   
+        fontSize: 16,
+        fontFamily: "Roboto",
       },
       spaceingFlight: {
         height:'10px'
       },
     backButton: {
         margin: theme.spacing(1),
-        marginLeft: '35%'
+        marginLeft: '15%'
       }
   }));
 
@@ -67,11 +76,15 @@ const PaymentPage = ({changePage, flightData, handlePay}) => {
     return (
 
         
-        <>
+        <div style={{
+            backgroundImage: `url(${backgroundImage})`,
+            height: '100vh', 
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'}}>>
           <Header />
-            <h2>Payment Page</h2>
-            <Paper>
-                <Grid >
+            <Paper className={classes.root}>
+                <Grid className={classes.parentGrid}>
                     {flightData[0].flights.map(flight => (
                     <Grid
                     container
@@ -126,7 +139,7 @@ const PaymentPage = ({changePage, flightData, handlePay}) => {
                 onClick={()=> changePage(-1)}>
                     Back To Friend's Contact
             </Button>    
-         </>
+         </div>
         
     )
 }
