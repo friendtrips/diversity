@@ -2,7 +2,7 @@ import React from 'react';
 import FlightDetails from './FlightDetails';
 import Header from './Header'
 import {Typography, Paper,Table, TableBody, TableCell, TableRow, TableHead, Button, Grid} from '@material-ui/core';
-
+import backgroundImage from '../../dist/beach.jpg';
 
 const FlightList = props => {
   const [open, setOpen] = React.useState(false);
@@ -20,14 +20,18 @@ const FlightList = props => {
   };
 
   return (
-    <>
-    <Header />
+    
+    
+    <div className="FlightList">
+  <Header />
     <Grid container direction="column" style={{width: '90%', marginLeft: 40, alignContent: 'flex-start'}}>
-      <Grid item>
-      <Typography variant="h4" style={{paddingBottom: 20}}>Flight List</Typography>
-      </Grid>
-      <Grid item>
+      
+      
         <Paper >
+          <Grid item>
+            <Typography variant="h4" style={{padding: 20}}>Flight List</Typography>
+          </Grid>
+          <Grid item>
           <Table>
           <TableHead>
             <TableRow>
@@ -53,10 +57,11 @@ const FlightList = props => {
             ))}
           </TableBody>
         </Table>
+        </Grid>
       </Paper>
-    </Grid>
   </Grid>
-  </>
+  </div>
+
   )
 };
 

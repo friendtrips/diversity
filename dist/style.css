@@ -1,3 +1,13 @@
+body {
+  background-image: url(./beach.jpg);
+  height: 100vh; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .fullscreen-bg {
   position: fixed;
   top: 0;

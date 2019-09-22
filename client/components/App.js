@@ -7,6 +7,7 @@ import BookTrip from './BookTrip';
 import PaymentPage from './PaymentPage';
 import Confirmation from './Confirmation';
 
+import { format } from 'date-fns'
 import axios from 'axios';
 
 export default class App extends React.Component {
@@ -82,22 +83,23 @@ export default class App extends React.Component {
                 flightNumber: 'HE9865',
               }
             },
-    
+
           },
         ],
       }
 
     ];
-    this.setState({ 
+    this.setState({
       flightData: hold,
-      friends: [{name:'Booke Snelligs', origin:'AUS'},
-      {name:'Harry Potty', origin:'SAT'}]
+      friends: [{ name: 'Booke Snelligs', origin: 'AUS' },
+      { name: 'Harry Potty', origin: 'SAT' }]
 
     }, () => this.updateDataWithNames());
 
   }
 
   selectDepartureDate(date) {
+    console.log(date)
     this.setState({ departureDate: date })
   }
 
@@ -106,7 +108,6 @@ export default class App extends React.Component {
   }
 
   handleUserInput(event) {
-    console.log(event)
     this.setState(event)
   }
 
@@ -115,7 +116,7 @@ export default class App extends React.Component {
   }
 
 
-  addTraveler(friend) {
+  addTraveler() {
     if (this.state.friends.length < 5) {
       this.setState({
         friends: [...this.state.friends, { name: '', origin: '' }]
@@ -159,12 +160,12 @@ export default class App extends React.Component {
     let departures = this.state.friends.map(friend => {
       return friend.origin
     })
-    axios.post('/flights', {
+    axios.post('http://localhost:3000/flights', JSON.stringify({
       airportDepartures: departures,
       airportDestinations: this.state.airports,
-      departureDate: this.state.departureDate,
-      returnDate: this.state.returnDate
-    })
+      departureDate: format(this.state.departureDate, 'yyyy-MM-dd'),
+      returnDate: format(this.state.returnDate, 'yyyy-MM-dd')
+    }))
       .then(response => {
         console.log(response.data)
         this.setState({
@@ -181,9 +182,9 @@ export default class App extends React.Component {
     hold[0].flights.forEach(flight => {
       if (person === flight.traveler) {
         flight.paid = true
-      } 
+      }
     })
-    this.setState({flightData: hold })
+    this.setState({ flightData: hold })
     setTimeout(() => {
       let count = this.state.flightData[0].flights.length
       this.state.flightData[0].flights.forEach(flight => {
@@ -191,18 +192,18 @@ export default class App extends React.Component {
           count--
         }
       })
-      if (count === 0 ) {
+      if (count === 0) {
         this.changePage(1)
       }
-    },10)
+    }, 10)
   }
 
   componentWillMount() {
     this.dummyData();
-  };
+  }
 
   render() {
-   
+
     if (this.state.pageNum === 0) {
       return (<LandingPage
         changePage={this.changePage}
@@ -241,8 +242,8 @@ export default class App extends React.Component {
           dummyData={this.dummyData}
         />
       );
-    } else if (this.state.pageNum === 5) {    
+    } else if (this.state.pageNum === 5) {
       return <Confirmation tripName={this.state.tripName} />;
+    }
   }
-}
 }
