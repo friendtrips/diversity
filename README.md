@@ -1,10 +1,11 @@
-# Brooke's Project Template
+# Friendtrips.world
 
-#### My personal template for web applications
+#### Austin TX Women Who Code Diversity Hackathon project
 
-This file structure enforces separation of concerns and provides basic testing support.
+We find the best flight options for groups of friends.
 
 #### Included technologies:
+* Material UI
 * React
 * Node/Express
 * Nodemon
