@@ -5,8 +5,8 @@ const LandingPage = (props) => {
   return (
     <div className="overlay">
       <div className="video-overlay"></div>
-      <div style={{ position: 'fixed', top: '0', right: '0', bottom: '0', left: '0', overflow: 'hidden', zIndex: '-100' }}>
-        <video loop muted autoPlay poster={require("../../dist/landingimage.jpg")} style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' }}>
+      <div className={"fullscreen-bg"} >
+        <video loop muted autoPlay poster={require("../../dist/landingimage.jpg")} className={"fullscreen-bg__video"} >
           <source src={require("../../dist/ocean.mp4")} type="video/mp4" />
         </video>
         <div style={{
