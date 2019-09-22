@@ -156,20 +156,27 @@ export default class App extends React.Component {
 
   fetchFlightData() {
     console.log('fetching flight data')
-    let departures = this.state.friends.map(friend => {
+    let departures1 = this.state.friends.map(friend => {
       return friend.origin
     })
-    axios.post('http://localhost:3000/flights', JSON.stringify({
-      airportDepartures: departures,
+    console.log('DEPART', departures1)
+    console.log('LOOK', this.state)
+    console.log('DATE', format(this.state.departureDate, 'yyyy-MM-dd'))
+
+    let sendToElyse = {
+      airportDepartures: departures1,
       airportDestinations: this.state.airports,
-      departureDate: format(this.state.departureDate, 'yyyy-MM-dd'),
-      returnDate: format(this.state.returnDate, 'yyyy-MM-dd')
-    }))
+      departureDate: "2019-09-26",
+      returnDate: "2019-10-01"
+    }
+    console.log(`THIS IS WHAT I'M SENDING`, sendToElyse);
+    console.log('Why')
+    axios.post('http://localhost:3000/flights', sendToElyse)
       .then(response => {
         console.log(response.data)
         this.setState({
           flightData: response.date
-        }, () => this.updateDataWithNames());
+        }, () => this.updateDataWithNames())
       })
       .catch(function (error) {
         console.log('error fetching flight data:', error);
