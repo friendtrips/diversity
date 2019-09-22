@@ -12,11 +12,12 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 2,
+      pageNum: 3,
       tripName: 'BFF Time in The Sun',
       departureDate: '',
       returnDate: '',
-      friends: [{name:'Booke Snelligs', origin: 'AUS'}, {name: 'Harry Potter', origin: 'SAT'} ],
+      friends: [{name:'Booke Snelligs', origin: 'AUS'}, 
+                {name: 'Harry Potter', origin: 'SAT'} ],
       airports: [
         'LGA',
         'JFK',
@@ -69,7 +70,7 @@ export default class App extends React.Component {
               /* This is going to be the itinerary for friend 1 */
               departureFlight: {
                 departureTime: '2019-10-15T07:20:00',
-                arrivalTime: '2019-10-15T10:00:00',
+                arriveTime: '2019-10-15T10:00:00',
                 leavingFrom: 'AUS',
                 arrivingAt: 'SFO',
                 flightNumber: 'HE9865',
@@ -90,7 +91,7 @@ export default class App extends React.Component {
             itinerary: {
               departureFlight: {
                 departureTime: '2019-10-15T06:50:00',
-                arrivalTime: '2019-10-15T10:00:00',
+                arriveTime: '2019-10-15T10:00:00',
                 leavingFrom: 'SAT',
                 arrivingAt: 'SFO',
                 flightNumber: 'R8675',
@@ -154,6 +155,7 @@ updateDataWithNames() {
         changePage={this.changePage}
         flightData={this.state.flightData}
         friends={this.state.friends}
+        tripName={this.state.tripName}
         />;
     } else if (this.state.pageNum === 3) {
       return <BookTrip changePage={this.changePage} friends={this.state.friends} />;

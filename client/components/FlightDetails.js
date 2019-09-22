@@ -1,58 +1,78 @@
 import React from 'react';
-import {Dialog, DialogTitle, Paper} from '@material-ui/core';
+import {Dialog, DialogTitle, Table, TableHead, TableRow, TableCell, TableBody, Grid} from '@material-ui/core';
 
 const FlightDetails = props => {
-   const { onClose, selectedValue, open, flightData, friends} = props;
-//   const selectedFlight = flightData[selectedValue];
+  const { onClose, selectedValue, open, flightData, tripName} = props;
 
-//   console.log(flightData)
-//   // selected value is the index of the trip
-  
-//   //iterate through friends
-//   const itineraries = friends.map(friend => {
-//     <Paper>
-//       {friend.name}
-//       {friend.origin}
-//       {selectedFlight.flights[findItineraryIndex(friend.origin)].itinerary.departureFlight.departureTime}
-//     </Paper>
-//   })
-
-    // create a row for each person that has:
-      
-      //name 
-      //origin
-
-      //flights[friend index]itinerary.departureFlight.departureTime
-      //itinerary.departureFlight.arrivalTime
-      //itinerary.departureFlight.flightNumber
-      //itinerary.departureFlight.airline
-
-      //itinerary.returnFlight.departureTime
-      //itinerary.returnFlight.arrivalTime
-      //itinerary.returnFlight.flightNumber
-      //itinerary.returnFlight.airline
-
-  // function for finding friends name; input is flights
-  const findItineraryIndex = (origin) => {
-    //if friends origin matches the itin departure leaving from
-    for (i = 0; i < selectedFlight.flights; i++){
-      if (origin === selectedFlight.flights[i].itinerary.departureFlight.leavingFrom) {
-        return i;
-      }
-    }
-      //return index of flights
-    }
   function handleClose() {
     onClose();
   }
 
- 
-  return (
-    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-      <DialogTitle id="simple-dialog-title">{selectedValue}</DialogTitle>
-     
-    </Dialog>
-  );
+
+  if (open){
+    console.log(flightData[selectedValue].flights[0])
+    return (
+      <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+        <DialogTitle id="simple-dialog-title">{tripName}</DialogTitle>
+         
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell align="left">Traveler</TableCell>
+                <TableCell align="left">Departure</TableCell>
+                <TableCell align="left">Return</TableCell>
+                
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {flightData[selectedValue].flights.map(trip => (
+                
+                <TableRow key={trip.traveler}>
+                  <TableCell>
+                    {trip.traveler} from {trip.itinerary.departureFlight.leavingFrom}
+                  </TableCell>
+                  <TableCell>
+                    <Grid container direction="column" justify="space-evenly">
+                      <Grid item>
+                        DEPART: {trip.itinerary.departureFlight.departureTime.slice(11, 16)}
+                      </Grid>
+                      <Grid item>
+                        ARRIVE: {trip.itinerary.departureFlight.arriveTime.slice(11, 16)}
+                      </Grid>
+                      <Grid item>
+                        FLIGHT: {trip.itinerary.departureFlight.flightNumber}
+                      </Grid>
+                      <Grid item>
+                        AIRLINE: {trip.itinerary.departureFlight.airline}
+                      </Grid>
+                    </Grid>
+                  </TableCell>
+                  <TableCell>
+                    <Grid container direction="column">
+                      <Grid item>
+                        DEPART: {trip.itinerary.returnFlight.departureTime.slice(11, 16)}
+                      </Grid>
+                      <Grid item>
+                        ARRIVE: {trip.itinerary.returnFlight.arriveTime.slice(11, 16)}
+                      </Grid>
+                      <Grid item>
+                        FLIGHT: {trip.itinerary.returnFlight.flightNumber}
+                      </Grid>
+                      <Grid item>
+                        AIRLINE: {trip.itinerary.returnFlight.airline}
+                      </Grid>
+                    </Grid>
+                  </TableCell>
+                  
+                </TableRow>
+            ))}
+          </TableBody>
+      </Table>
+      </Dialog>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default FlightDetails;

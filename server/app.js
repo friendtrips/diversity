@@ -1,7 +1,14 @@
 // const fs = require('fs');
 // const https = require('https');
 // const http = require('http');
+
 const express = require('express');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+
+const skyScanner = require('./skyscanner.js');
+
+const { getFlights } = skyScanner;
 
 // const hostname = 'friendtrips.world';
 // const hostname = '127.0.0.1';
@@ -27,9 +34,12 @@ const app = express();
 // });
 
 app.use('/', express.static('dist'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.status(200).send();
+app.post('/flights', (req, res) => {
+  const data = req.body;
+  getFlights(res, data);
 });
 
 // httpServer.listen(httpPort, hostname);
