@@ -14,7 +14,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 0,
+      pageNum: 1,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
@@ -26,6 +26,7 @@ export default class App extends React.Component {
     this.changePage = this.changePage.bind(this)
     this.updateDataWithNames = this.updateDataWithNames.bind(this)
     this.handleUserInput = this.handleUserInput.bind(this)
+    this.handlePay = this.handlePay.bind(this)
   }
 
   //change page, associate this to a button to get to the next page
@@ -39,6 +40,7 @@ export default class App extends React.Component {
   dummyData() {
     const hold = [
       {
+        totalCost: 500,
         flights: [
           {
             itinerary: {
@@ -51,8 +53,14 @@ export default class App extends React.Component {
                 flightNumber: 'HE9865',
                 airline: 'Southwest'
               },
-              flightNumber: 'HE9865',
-              airline: 'Southwest'
+              returnFlight: {
+                departureTime: '2019-10-17T07:20:00',
+                arriveTime: '2019-10-17T10:00:00',
+                leavingFrom: 'SFO',
+                arrivingAt: 'AUS',
+                airline: 'Southwest',
+                flightNumber: 'HE9865',
+              }
             },
 
           },
@@ -66,15 +74,28 @@ export default class App extends React.Component {
                 flightNumber: 'R8675',
                 airline: 'Delta'
               },
-              flightNumber: 'R8675',
-              airline: 'Delta'
+              returnFlight: {
+                departureTime: '2019-10-17T07:20:00',
+                arriveTime: '2019-10-17T10:00:00',
+                leavingFrom: 'SFO',
+                arrivingAt: 'SAT',
+                airline: 'Southwest',
+                flightNumber: 'HE9865',
+              }
             },
-            totalCost: 500,
+    
           },
         ],
       }
+
     ];
-    this.setState({ flightData: hold }, () => this.updateDataWithNames());
+    this.setState({ 
+      flightData: hold,
+      friends: [{name:'Booke Snelligs', origin:'AUS'},
+      {name:'Harry Potty', origin:'SAT'}]
+
+    }, () => this.updateDataWithNames());
+
   }
 
   selectDepartureDate(date) {
@@ -127,6 +148,7 @@ export default class App extends React.Component {
 
         let itineraryIndex = findItineraryIndex(friendsCopy[i].origin, index);
         trip.flights[itineraryIndex].traveler = friendsCopy[i].name;
+        trip.flights[itineraryIndex].paid = false
       }
     });
 
@@ -155,11 +177,35 @@ export default class App extends React.Component {
       });
   }
 
+  handlePay(person) {
+    let hold = this.state.flightData
+    hold[0].flights.forEach(flight => {
+      if (person === flight.traveler) {
+        flight.paid = true
+      } 
+    })
+    this.setState({flightData: hold })
+    setTimeout(() => {
+      let count = this.state.flightData[0].flights.length
+      this.state.flightData[0].flights.forEach(flight => {
+        if (flight.paid === true) {
+          count--
+        }
+      })
+      console.log(count)
+      if (count === 0 ) {
+        this.changePage(1)
+        console.log(count)
+      }
+    },10)
+  }
+
   componentWillMount() {
     this.dummyData();
   }
 
   render() {
+   
     if (this.state.pageNum === 0) {
       return (<LandingPage
         changePage={this.changePage}
@@ -194,11 +240,12 @@ export default class App extends React.Component {
           changePage={this.changePage}
           friends={this.state.friends}
           flightData={this.state.flightData}
+          handlePay={this.handlePay}
           dummyData={this.dummyData}
         />
       );
-    } else if (this.state.pageNum === 5) {
+    } else if (this.state.pageNum === 5) {    
       return <Confirmation tripName={this.state.tripName} />;
-    }
   }
+}
 }

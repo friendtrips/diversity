@@ -12,6 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Button';
+import Header from './Header';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -48,12 +49,10 @@ const BookTrip = ({changePage, friends}) => {
     const classes = useStyles();
    
     return (
-    //     <Container>
+
         <>
-             <div>
-                <h2>Logo</h2>
-                <hr></hr>
-            </div> 
+        <Header />
+          
         <Paper className={classes.root}>
                 <Table className={classes.table}>
                 <TableHead>
@@ -94,9 +93,6 @@ const BookTrip = ({changePage, friends}) => {
     </>
     )
 }
-
-
-
 
 
 
