@@ -8,7 +8,7 @@ import {
 
 const TripPreferences = (props) => {
     return (
-        <div>
+        <div style={{ zIndex: '-100' }}>
             <Paper style={{ padding: '32px', width: '525px' }}>
                 <Typography variant="h5" component="h3">
                     Let's plan a trip!

@@ -138,17 +138,17 @@ export default class App extends React.Component {
     let departures = this.state.friends.map(friend => {
       return friend.origin
     })
-    axios.post('/flights', {
+    axios.post('http://localhost:3000/flights', JSON.stringify({
       airportDepartures: departures,
       airportDestinations: this.state.airports,
       departureDate: format(this.state.departureDate, 'yyyy-MM-dd'),
       returnDate: format(this.state.returnDate, 'yyyy-MM-dd')
-    })
+    }))
       .then(response => {
         console.log(response.data)
-        // this.setState({
-        //   flightData: response.data
-        // })
+        this.setState({
+          flightData: response.data
+        })
       })
       .catch(function (error) {
         console.log('error fetching flight data:', error);
@@ -157,7 +157,7 @@ export default class App extends React.Component {
 
   componentWillMount() {
     this.dummyData();
-  };
+  }
 
   render() {
     if (this.state.pageNum === 0) {
