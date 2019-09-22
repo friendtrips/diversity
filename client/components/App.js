@@ -8,18 +8,21 @@ import PaymentPage from './PaymentPage';
 import Confirmation from './Confirmation';
 
 import axios from 'axios';
+import { tsObjectKeyword } from '@babel/types';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 0,
+      pageNum: 1,
       tripName: '',
       departureDate: new Date(),
       returnDate: new Date(),
       friends: [{ name: 'Booke Snelligs', origin: 'AUS' }, { name: 'Harry Potter', origin: 'SAT' }],
       airports: ['LGA', 'JFK', 'MDW', 'ORD', 'LAS', 'SEA', 'SFO', 'DCA', 'MSY', 'PSP', 'SAN', 'STL', 'SEZ', 'SDX', 'HNL', 'MIA', 'BBG', 'BKG', 'BOS', 'MCO', 'PDX', 'BNA', 'LAX', 'SAT', 'AUS', 'SAV'],
-      flightData: []
+      flightData: [],
+      travelerInput: '',
+      originInput: ''
     };
     this.dummyData = this.dummyData.bind(this)
     this.changePage = this.changePage.bind(this)
@@ -97,6 +100,13 @@ export default class App extends React.Component {
     this.fetchFlightData();
   }
 
+
+  addTraveler(friend) {
+    this.setState({
+      friends: [...this.state.friends, friend]
+    })
+  }
+
   updateDataWithNames() {
     const findItineraryIndex = (origin, index) => {
       for (let i = 0; i < this.state.flightData[index].flights.length; i++) {
@@ -153,7 +163,7 @@ export default class App extends React.Component {
       />)
     } else if (this.state.pageNum === 1) {
       return (<TripPreferences
-        changePage={this.changePage} handleUserInput={this.handleUserInput} tripName={this.state.tripName} returnDate={this.state.returnDate} departureDate={this.state.departureDate} selectDepartureDate={this.selectDepartureDate.bind(this)} selectReturnDate={this.selectReturnDate.bind(this)} handleClickOnFindFlights={this.handleClickOnFindFlights.bind(this)}
+        changePage={this.changePage} handleUserInput={this.handleUserInput} tripName={this.state.tripName} returnDate={this.state.returnDate} departureDate={this.state.departureDate} selectDepartureDate={this.selectDepartureDate.bind(this)} selectReturnDate={this.selectReturnDate.bind(this)} handleClickOnFindFlights={this.handleClickOnFindFlights.bind(this)} travelerInput={this.state.travelerInput} originInput={this.state.originInput} addTraveler={this.addTraveler.bind(this)}
       />)
     } else if (this.state.pageNum === 2) {
       return <FlightList
