@@ -12,7 +12,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 2,
+      pageNum: 3,
       tripName: 'BFF Time in The Sun',
       departureDate: '',
       returnDate: '',
@@ -53,18 +53,17 @@ export default class App extends React.Component {
     this.updateDataWithNames = this.updateDataWithNames.bind(this);
   }
 
+
   // change page, associate this to a button to get to the next page
-  changePage() {
+  changePage(value) {
     let currentPage = this.state.pageNum;
-    currentPage++;
+    currentPage +=value;
     this.setState({ pageNum: currentPage });
   }
-
   // Create dummy data, invoke this in your component if you want/need data
   dummyData() {
     const hold = [
       {
-        destinationLocation: 'SFO',
         flights: [
           {
             itinerary: {
@@ -90,7 +89,6 @@ export default class App extends React.Component {
           },
           {
             itinerary: {
-              /* This is going to be the itinerary for friend 2 */
               departureFlight: {
                 departureTime: '2019-10-15T06:50:00',
                 arriveTime: '2019-10-15T10:00:00',
@@ -108,7 +106,6 @@ export default class App extends React.Component {
                 airline: 'Delta'
               }
             },
-            
           }
         ],
         totalCost: 500

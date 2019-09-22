@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -47,24 +48,25 @@ const BookTrip = ({changePage, friends}) => {
     const classes = useStyles();
    
     return (
+    //     <Container>
         <>
-        <div>
-            <h2>Logo</h2>
-            <hr></hr>
-        </div>
+             <div>
+                <h2>Logo</h2>
+                <hr></hr>
+            </div> 
         <Paper className={classes.root}>
-            <Table className={classes.table}>
+                <Table className={classes.table}>
                 <TableHead>
-                <TableRow>
-                    <TableCell className={classes.title} align="center">Name</TableCell>
-                    <TableCell className={classes.title} align="center">Email</TableCell>
-                </TableRow>
+                    <TableRow>
+                        <TableCell className={classes.title} align="center">Name</TableCell>
+                        <TableCell className={classes.title} align="center">Email</TableCell>
+                    </TableRow>
                 </TableHead>
                 <TableBody>
                 {friends.map(friend => (
                     <TableRow key={friend.name}>
                         <TableCell align="center" className={classes.nameField} component="th" scope="row">
-                            {friend}
+                            {friend.name}
                         </TableCell>
                         <TableCell align="center">
                         <TextField
@@ -89,7 +91,7 @@ const BookTrip = ({changePage, friends}) => {
             onClick={()=> changePage(1)}>
                 Send Itenaries
         </Button>    
-    </>    
+    </>
     )
 }
 
