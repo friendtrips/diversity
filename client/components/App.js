@@ -12,7 +12,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 3,
+      pageNum: 4,
       tripName: 'BFF Time in The Sun',
       departureDate: '',
       returnDate: '',
