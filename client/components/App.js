@@ -99,7 +99,6 @@ export default class App extends React.Component {
   }
 
   selectDepartureDate(date) {
-    console.log(date)
     this.setState({ departureDate: date })
   }
 

@@ -12,19 +12,20 @@ const TripPreferences = (props) => {
     return (
         <div style={{
             backgroundImage: `url(${backgroundImage})`,
-            height: '100vh', 
+            height: '100vh',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover'}}>
-        <Header />
-        <div>
-            <Paper style={{ padding: '32px', width: '525px' }}>
-                <Typography variant="h5" component="h3">
-                    Let's plan a trip!
+            backgroundSize: 'cover'
+        }}>
+            <Header />
+            <div>
+                <Paper style={{ padding: '32px', width: '525px', marginLeft: 40 }}>
+                    <Typography variant="h5" component="h3">
+                        Let's plan a trip!
                     </Typography>
 
                     <form>
-                        <Grid container justify="space-around">
+                        <Grid>
                             <TextField
                                 style={{ width: '100%' }}
                                 id="outlined-name"
@@ -95,14 +96,14 @@ const TripPreferences = (props) => {
                                 : null
                             }
 
-                    </Grid>
-                </form>
-                <Grid><Button variant="contained" style={{ width: '100%', marginTop: '10px' }} onClick={() => {
-                    props.handleClickOnFindFlights();
-                    props.changePage(1)
-                }}>Find Flights</Button></Grid>
-            </Paper>
-        </div >
+                        </Grid>
+                    </form>
+                    <Grid><Button variant="contained" style={{ width: '100%', marginTop: '10px' }} onClick={() => {
+                        props.handleClickOnFindFlights();
+                        props.changePage(1)
+                    }}>Find Flights</Button></Grid>
+                </Paper>
+            </div >
         </div>
     )
 }
