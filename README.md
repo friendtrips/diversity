@@ -1,6 +1,6 @@
 # FriendTrips
 
-![image](https://gph.is/g/a9Wr99o)
+![](https://media.giphy.com/media/dXzpizKAcPRi0dpnUi/giphy.gif)
 
 #### About
 
