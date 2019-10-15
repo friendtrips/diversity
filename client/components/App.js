@@ -170,16 +170,16 @@ export default class App extends React.Component {
       returnDate: "2019-10-01"
     }
     console.log(`THIS IS WHAT I'M SENDING`, sendToElyse);
-    console.log('Why')
     axios.post('http://localhost:3000/flights', sendToElyse)
       .then(response => {
         console.log(response.data)
         this.setState({
           flightData: response.date
         }, () => this.updateDataWithNames())
-      })
+      }).then(console.log('UPDATED STATE:', this.state))
       .catch(function (error) {
         console.log('error fetching flight data:', error);
+        this.dummyData();
       });
   }
 
