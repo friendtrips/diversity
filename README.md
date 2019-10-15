@@ -1,12 +1,14 @@
 # FriendTrips
 
+![](FT.gif)
+
 #### About
 
 *FriendTrips* is a web-app to help groups of friends who live all across the country find affordable flight destinations using the Skyscanner API. 
 
 A user first selects their departure and return dates, as well as the departing airports for each traveller, and then is presented with a list of destinations, their total cost, and the evenly distributed cost per person for the trip. The user can select the destination they prefer and view flight details for each person. From there, the user can choose to book the trip and send iternaries to their friends.
 
-*FriendTrips* was built with a two day time limit as an entry in the 2019 Austin Women Who Code Diversity Hackathon. http://www.friendtrips.world/
+*FriendTrips* was built with a two day time limit as an entry in the 2019 Austin Women Who Code Diversity Hackathon.
 
 #### Contributors
 

@@ -204,9 +204,9 @@ export default class App extends React.Component {
     }, 10)
   }
 
-  componentWillMount() {
-    this.dummyData();
-  }
+  // componentWillMount() {
+  //   this.dummyData();
+  // }
 
   render() {
 
