@@ -1,7 +1,5 @@
 # FriendTrips
 
-![](https://media.giphy.com/media/dXzpizKAcPRi0dpnUi/giphy.gif)
-
 #### About
 
 *FriendTrips* is a web-app to help groups of friends who live all across the country find affordable flight destinations using the Skyscanner API. 
