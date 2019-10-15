@@ -10,15 +10,15 @@ A user first selects their departure and return dates, as well as the departing 
 
 #### Contributors
 
-[Evelyn Binkard] (https://github.com/evelynbinkard)
+[Evelyn Binkard](https://github.com/evelynbinkard)
 
-[Justan Other Human] (https://github.com/justanotherhuman)
+[Justan Other Human](https://github.com/justanotherhuman)
 
-[Brooke Snellings] (https://github.com/brookesnellings)
+[Brooke Snellings](https://github.com/brookesnellings)
 
-[Elyse Vest] (https://github.com/evest90)
+[Elyse Vest](https://github.com/evest90)
 
-[Miles Zander] (https://github.com/mileszander)
+[Miles Zander](https://github.com/mileszander)
 
 #### Tech Stack:
 * React
