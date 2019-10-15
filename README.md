@@ -36,7 +36,7 @@ Miles Zander [https://github.com/mileszander]
 
 ### Technical Challenges/What We Learned:
 
-* “SSL certification with .crt, .ca0-bundle, and .key files is really hard”
+* “SSL certification with .crt, .ca0-bundle, and .key files”
 * “Learning more about the intricacies about Material UI and using event defaults for data needed for dialog boxes”
 * “You can fire off an array of Promises sequentially by using reduce! (Fun Fact: Promise.all doesn’t necessarily fire off promises in order)”
 * “The required specificity of POST request objects and connecting the client to your server”
